@@ -1,8 +1,12 @@
 const express = require('express')
 const router = require('./routes/routes')
+const cors = require('cors')
 const db = require('./config/db')
 
 const app = express();
+
+//Habilitar cors "Access-Control-Allow-Origin"
+app.use(cors())
 
 //Habilitar lectura de datos
 app.use(express.json());

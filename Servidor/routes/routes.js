@@ -21,8 +21,9 @@ router.get('/inventario', inventarioController.getInventario);
 router.get('/inventario/:idInventario', inventarioController.getInventarioById);
 router.post('/agregarInventario', inventarioController.agregarInventario);
 router.put('/actualizarInventario/:idInventario', inventarioController.actualizarInventario );
-router.delete('/eliminarInventario/:idInventario', inventarioController.eliminarInventarioFisico);
 router.put('/eliminarInventarioLogico/:idInventario', inventarioController.eliminarInventarioLogico);
+router.delete('/eliminarInventario/:idInventario', inventarioController.eliminarInventarioFisico);
+
 
 //Ruta Cliente
 router.post('/agregarCliente', clienteController.agregarCliente)
