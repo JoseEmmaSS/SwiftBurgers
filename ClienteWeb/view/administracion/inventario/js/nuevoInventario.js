@@ -9,6 +9,7 @@ nuevoInventario.addEventListener('click', async (event) => {
   let precio = document.getElementById('precio').value;
   let cantidad = document.getElementById('cantidad').value;
 
+  //Agregar Fecha actual de ingreso del producto
   let fechaActual = new Date();
   let dia = fechaActual.getDate();
   let mes = fechaActual.getMonth() + 1;
@@ -26,7 +27,7 @@ nuevoInventario.addEventListener('click', async (event) => {
 
   let inventarioJSON = JSON.stringify(inventario);
 
-  console.log(inventarioJSON);
+  // console.log(inventarioJSON);
 
   try {
     let response = await fetch('http://localhost:3000/agregarInventario', {
