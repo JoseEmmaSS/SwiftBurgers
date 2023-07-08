@@ -1,9 +1,10 @@
 // Agregar Inventario
-
 const nuevoInventario = document.getElementById('agregarInventario')
+const inputs = document.querySelectorAll('#formulario input')
 
 nuevoInventario.addEventListener('click', async (event) => {
   event.preventDefault();
+
   let nombre = document.getElementById('nombre').value;
   let fechaCaducidad = document.getElementById('fechaCaducidad').value;
   let precio = document.getElementById('precio').value;
@@ -47,3 +48,7 @@ nuevoInventario.addEventListener('click', async (event) => {
     console.log('Error en la conexión');
   }
 });
+
+
+
+
