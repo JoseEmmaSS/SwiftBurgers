@@ -1,5 +1,5 @@
+//URL de servidor
 let urlApi = 'http://localhost:3000/'
-
 // Mostar Inventario
 let url = urlApi + 'inventario'
 fetch(url)
@@ -12,7 +12,7 @@ const mostarData = (data) => {
 
   for (let i = 0; i < data.length; i++) {
     bodyInventario += `
-        <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+        <tr class="listaInventario border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
           <td class="whitespace-nowrap dark:text-white px-6 py-4 font-medium">${data[i].idInventario}</td>
           <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].nombre}</td>
           <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].fechaCaducidad.substring(0, 10)}</td>
@@ -71,9 +71,26 @@ const mostarData = (data) => {
     });
   }
   
-
-
 }
+
+//Filtar Inventario
+
+document.addEventListener('keyup', e => {
+
+  //Limpiar input cuando precione tecla esc
+  if(e.key == 'Escape')e.target.value = ''
+  
+  //Filtar contenido de la tabla
+  if(e.target.matches('#buscador')){
+    document.querySelectorAll('.listaInventario').forEach(listaInventario => {
+      listaInventario.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+        ?listaInventario.classList.remove('hidden')
+        :listaInventario.classList.add('hidden')
+    })
+  }
+})
+
+
 
 editarInventario = (idInventario) => {
   window.location.href = `editarInventario.html?idInventario=${idInventario}`;
