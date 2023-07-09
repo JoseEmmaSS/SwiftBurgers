@@ -10,10 +10,11 @@ nuevoInventario.addEventListener('click', async (event) => {
   let precio = document.getElementById('precio').value;
   let cantidad = document.getElementById('cantidad').value;
 
-  if (!nombre || !fechaCaducidad || !precio || cantidad) {
+  if (!nombre || !fechaCaducidad || !precio || !cantidad) {
     Swal.fire('Llene los campos para agregar algun producto', '', 'warning');
-    return
+    return;
   }
+
 
   // Agregar Fecha actual de ingreso del producto
   let fechaActual = new Date();
@@ -21,7 +22,6 @@ nuevoInventario.addEventListener('click', async (event) => {
   let mes = fechaActual.getMonth() + 1;
   let año = fechaActual.getFullYear();
   let fechaActualFormateada = `${año}-${mes}-${dia}`;
-
 
 
   let inventario = {

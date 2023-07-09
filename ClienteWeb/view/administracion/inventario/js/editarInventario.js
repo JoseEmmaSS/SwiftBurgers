@@ -10,15 +10,13 @@ const idInventario = obtenerIdInventarioDeURL();
 console.log("ID del inventario:", idInventario);
 
 let urlApi = 'http://localhost:3000/'
-
-
 let url = urlApi + 'inventario/' + idInventario
 fetch(url)
   .then(response => response.json())
   .then(data => mostarInventario(data))
   .then(error => console.log(error))
 
-
+//Precargado datos en campos de formulario
 mostarInventario = (data) => {
   document.getElementById('nombre').value = data.nombre;
   document.getElementById('precio').value = data.precio;
@@ -48,12 +46,13 @@ editarInventario.addEventListener('click', async (event) => {
   let cantidad = document.getElementById('cantidad').value
   let disponible = document.getElementById('disponible').checked
 
-
+  //Validaciones de formulario "Verificar que no este vacio"
   if (!nombre || !fechaCaducidad || !precio || !cantidad) {
     Swal.fire('Llene todos los campos', '', 'wraning')
     return;
   }
 
+  //Obtener valores en arreglo
   let inventario = {
     nombre: nombre,
     fechaCaducidad: fechaCaducidad,
@@ -61,8 +60,10 @@ editarInventario.addEventListener('click', async (event) => {
     cantidad: cantidad,
     disponible: disponible
   }
+  //Dar formato JSON para ser procesado
   let inventarioJSON = JSON.stringify(inventario)
 
+  //Relizando peticion PUT
   try {
     let response = await fetch(url, {
       method: 'PUT',
