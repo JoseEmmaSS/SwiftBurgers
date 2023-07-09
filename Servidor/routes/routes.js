@@ -20,7 +20,7 @@ router.get('/chef/:idChef', chefController.getChefById);
 router.get('/inventario', inventarioController.getInventario);
 router.get('/inventario/:idInventario', inventarioController.getInventarioById);
 router.post('/agregarInventario', inventarioController.agregarInventario);
-router.put('/actualizarInventario/:idInventario', inventarioController.actualizarInventario );
+router.put('/inventario/:idInventario', inventarioController.actualizarInventario );
 router.put('/eliminarInventarioLogico/:idInventario', inventarioController.eliminarInventarioLogico);
 router.delete('/eliminarInventario/:idInventario', inventarioController.eliminarInventarioFisico);
 
