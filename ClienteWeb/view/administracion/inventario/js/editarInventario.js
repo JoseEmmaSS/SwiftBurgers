@@ -20,22 +20,23 @@ fetch(url)
 
 
 mostarInventario = (data) => {
-  document.getElementById('nombre').value = data.nombre
-  document.getElementById('precio').value = data.precio
-  document.getElementById('cantidad').value = data.cantidad
-  document.getElementById('disponible').checked = data.disponible
+  document.getElementById('nombre').value = data.nombre;
+  document.getElementById('precio').value = data.precio;
+  document.getElementById('cantidad').value = data.cantidad;
+  document.getElementById('disponible').checked = data.disponible;
 
-  // const fechaC = new Date(data.fechaCaducidad)
+  const fechaC = new Date(data.fechaCaducidad);
 
-  // const dd = fechaC.getDay()
-  // const mm = fechaC.getMonth() + 1
-  // const yy = fechaC.getFullYear()
+  const dd = fechaC.getDate(); // Obtener el día del mes
+  const mm = fechaC.getMonth() + 1; // Obtener el mes (se suma 1 porque los meses en JavaScript son 0-11)
+  const yy = fechaC.getFullYear(); // Obtener el año
 
-  // const fechaFormateada = `${dd.toString().padStart(2, '0')}/${mm.toString().padStart(2, '0')}/${yy}`
+  const fechaFormateada = `${yy}-${mm.toString().padStart(2, '0')}-${dd.toString().padStart(2, '0')}`;
 
-  // const fechaInput = document.getElementById('fechaCaducidad');
-  // fechaInput.value = fechaFormateada;
-}
+  const fechaInput = document.getElementById('fechaCaducidad');
+  fechaInput.value = fechaFormateada;
+};
+
 
 const editarInventario = document.getElementById('editarInventario')
 
@@ -47,6 +48,12 @@ editarInventario.addEventListener('click', async (event) => {
   let cantidad = document.getElementById('cantidad').value
   let disponible = document.getElementById('disponible').checked
 
+
+  if (!nombre || !fechaCaducidad || !precio || !cantidad) {
+    Swal.fire('Llene todos los campos', '', 'wraning')
+    return;
+  }
+
   let inventario = {
     nombre: nombre,
     fechaCaducidad: fechaCaducidad,
@@ -55,7 +62,6 @@ editarInventario.addEventListener('click', async (event) => {
     disponible: disponible
   }
   let inventarioJSON = JSON.stringify(inventario)
-  console.log(inventarioJSON)
 
   try {
     let response = await fetch(url, {
@@ -65,9 +71,11 @@ editarInventario.addEventListener('click', async (event) => {
         'Content-Type': 'application/json',
       }
     });
-    if(response.ok){
-      console.log('Actualizado')
-    }else{
+    if (response.ok) {
+      Swal.fire('Producto actualizado', '', 'success').then(()=>{
+        window.location.href = './inventario.html'
+      });
+    } else {
       console.log('Error al actualizar')
     }
   } catch (error) {

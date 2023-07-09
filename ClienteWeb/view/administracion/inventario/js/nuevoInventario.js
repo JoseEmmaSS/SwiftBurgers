@@ -10,12 +10,19 @@ nuevoInventario.addEventListener('click', async (event) => {
   let precio = document.getElementById('precio').value;
   let cantidad = document.getElementById('cantidad').value;
 
-  //Agregar Fecha actual de ingreso del producto
+  if (!nombre || !fechaCaducidad || !precio || cantidad) {
+    Swal.fire('Llene los campos para agregar algun producto', '', 'warning');
+    return
+  }
+
+  // Agregar Fecha actual de ingreso del producto
   let fechaActual = new Date();
   let dia = fechaActual.getDate();
   let mes = fechaActual.getMonth() + 1;
   let año = fechaActual.getFullYear();
   let fechaActualFormateada = `${año}-${mes}-${dia}`;
+
+
 
   let inventario = {
     nombre: nombre,
@@ -28,8 +35,6 @@ nuevoInventario.addEventListener('click', async (event) => {
 
   let inventarioJSON = JSON.stringify(inventario);
 
-  // console.log(inventarioJSON);
-
   try {
     let response = await fetch('http://localhost:3000/agregarInventario', {
       method: 'POST',
@@ -40,7 +45,8 @@ nuevoInventario.addEventListener('click', async (event) => {
     });
 
     if (response.ok) {
-      console.log('Inventario agregado exitosamente');
+      Swal.fire('Producto agregado al inventario', '', 'success');
+      console.log('Agregado correctamente al inventario');
     } else {
       console.log('Error al agregar el inventario');
     }
@@ -48,7 +54,3 @@ nuevoInventario.addEventListener('click', async (event) => {
     console.log('Error en la conexión');
   }
 });
-
-
-
-
