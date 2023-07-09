@@ -4,5 +4,8 @@
   },
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "dependencies": {
+    "sweetalert2": "^11.7.12"
   }
 }

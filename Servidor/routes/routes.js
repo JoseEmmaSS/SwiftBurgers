@@ -22,7 +22,7 @@ router.get('/inventario/:idInventario', inventarioController.getInventarioById);
 router.post('/agregarInventario', inventarioController.agregarInventario);
 router.put('/inventario/:idInventario', inventarioController.actualizarInventario );
 router.put('/eliminarInventarioLogico/:idInventario', inventarioController.eliminarInventarioLogico);
-router.delete('/eliminarInventario/:idInventario', inventarioController.eliminarInventarioFisico);
+router.delete('/Inventario/:idInventario', inventarioController.eliminarInventarioFisico);
 
 
 //Ruta Cliente

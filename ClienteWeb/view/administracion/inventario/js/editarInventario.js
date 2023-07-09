@@ -47,7 +47,6 @@ editarInventario.addEventListener('click', async (event) => {
   let cantidad = document.getElementById('cantidad').value
   let disponible = document.getElementById('disponible').checked
 
-
   let inventario = {
     nombre: nombre,
     fechaCaducidad: fechaCaducidad,
