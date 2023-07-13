@@ -1,6 +1,23 @@
 // Agregar Inventario
 const nuevoProducto = document.getElementById('agregarPlatillo')
-// const inputs = document.querySelectorAll('#formulario input')
+
+let fileInput = document.getElementById('file');
+
+let imagen
+
+fileInput.addEventListener('change', e => {
+  imagen = e.target.files[0];
+  console.log(imagen)
+  let previewImag = document.getElementById('previewImage');
+  if (imagen) {
+    let renderImagen = new FileReader();
+    renderImagen.onload = (e) => {
+      previewImag.src = e.target.result;
+    }
+    renderImagen.readAsDataURL(imagen)
+  }
+});
+
 
 nuevoProducto.addEventListener('click', async (event) => {
   event.preventDefault();
@@ -8,25 +25,17 @@ nuevoProducto.addEventListener('click', async (event) => {
   let nombre = document.getElementById('nombre').value;
   let precio = document.getElementById('precio').value;
   let descripcion = document.getElementById('descripcion').value;
-  let imagen = document.getElementById('file').files[0];
+  
   let nombreImagen = imagen.name;
+
+  console.log(nombreImagen)
 
   if(!nombre || !precio || !descripcion){
     Swal.fire('Llene todos los campos', '', 'warning');
     return
   }
  
-  if (imagen) {
-
-    let renderImagen = new FileReader();
-    renderImagen.onload = (e) => {
-      let imagenCargada = new Image();
-      imagenCargada.src =  e.target.result;
-      imagenCargada.onload = () => {
-        console.log(`Imagen cargada ${imagenCargada}`);
-      }
-    }
-    renderImagen.readAsDataURL(imagen)
+  
 
     let formData = new FormData();
     formData.append('nombre', nombre);
@@ -49,7 +58,5 @@ nuevoProducto.addEventListener('click', async (event) => {
     } catch (error) {
       console.log('Error en la conexión');
     }
-  } else {
-    Swal.fire('Llene los campos para agregar el platillo', '', 'warning');
-  }
+  
 });
