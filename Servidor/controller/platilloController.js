@@ -13,6 +13,17 @@ const agregarPlatillo = async (req, res) => {
     res.json(platillo)
 }
 
+//SUBIR IMAGEN
+const subirImagen = (req, res) => {
+    let EDFile = req.files.file
+    EDFile.mv(`./src/img/${EDFile.name}`, error => {
+        if(error) return res.status(500).send({msg: error})
+
+        return res.status(200).send({msg: 'Imagen Cargada'})
+    })
+}
+
+
 //ACTUALIZAR PLATILLO
 const actualizarPlatillo = async (req, res) => {
     const { idPlatillo } = req.params
@@ -53,6 +64,7 @@ const eliminarPLatillo = async (req, res) => {
 module.exports = {
     getPlatillos,
     agregarPlatillo,
+    subirImagen,
     actualizarPlatillo,
     eliminarPLatillo
 }
