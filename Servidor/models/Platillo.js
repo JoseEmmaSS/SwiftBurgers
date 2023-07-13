@@ -22,7 +22,7 @@ const Platillo = db.define('platillo', {
     },
     imagen: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     }
 }, {
     tableName: 'platillo',
