@@ -38,6 +38,6 @@ router.post('/agregarPlatillo', platilloController.agregarPlatillo)
 router.delete('/eliminarPlatillo/:idPlatillo', platilloController.eliminarPLatillo)
 
 //Ruta Cargar Imagen
-router.post('/subirImagen', platilloController.subirImagen);
+// router.post('/subirImagen', platilloController.subirImagen);
 
 module.exports = router
