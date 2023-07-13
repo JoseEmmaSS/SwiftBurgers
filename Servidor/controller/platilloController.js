@@ -10,7 +10,6 @@ const getPlatillos = async (req, res) => {
 //CREAR PLATILLO
 const agregarPlatillo = async (req, res) => {
     const platilloData = req.body;
-    
     const platillo = await Platillo.create(platilloData);
     
     if (req.files && req.files.file) {

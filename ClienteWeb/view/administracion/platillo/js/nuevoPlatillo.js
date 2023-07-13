@@ -5,6 +5,7 @@ let fileInput = document.getElementById('file');
 
 let imagen
 
+
 fileInput.addEventListener('change', e => {
   imagen = e.target.files[0];
   console.log(imagen)
@@ -35,13 +36,12 @@ nuevoProducto.addEventListener('click', async (event) => {
     return
   }
  
-  
-
     let formData = new FormData();
     formData.append('nombre', nombre);
     formData.append('precio', precio);
     formData.append('descripcion', descripcion);
     formData.append('imagen' ,nombreImagen);
+    formData.append('file', imagen);
 
 
     try {
@@ -58,5 +58,4 @@ nuevoProducto.addEventListener('click', async (event) => {
     } catch (error) {
       console.log('Error en la conexión');
     }
-  
 });
