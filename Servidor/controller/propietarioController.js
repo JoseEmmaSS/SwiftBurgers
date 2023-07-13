@@ -32,8 +32,6 @@ const nuevoPropietario = async (req, res) => {
     }
 }
 
-
-
 module.exports = {
     inicio,
     nuevoPropietario,
