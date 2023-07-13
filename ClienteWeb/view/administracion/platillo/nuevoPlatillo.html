@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../dist/output.css">
+    <title>Nuevo Platillo</title>
+</head>
+
+<body class="dark:bg-gray-600">
+    <header class="mb-4">
+        <nav class="bg-white dark:bg-gray-700 dark:text-white border-gray-200  px-4 lg:px-6 py-5 shadow-md">
+            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+                <a href="#" class="flex items-center">
+                    <img src="../../../src/svg/icono_restaurante.svg" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
+                    <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base">Nuevo Platillo</span>
+                </a>
+
+                <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
+                    <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                        <li>
+                            <a href="#"
+                                class="block py-2 pr-4 pl-3 text-gray-900 dark:text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0"
+                                aria-current="page">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700 dark:text-white lg:bg-transparent lg:text-primary-700 lg:p-0">Opciones</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700 dark:text-white lg:bg-transparent lg:text-primary-700 lg:p-0">Opciones</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="m-10">
+        <div>
+            <a href="../platillo/platillos.html"
+                class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded mr-2 h-10">
+                <img class="h-4 pr-2" src="../../../src/svg/regresar.svg" alt="Nuevo"><samp>Regresar</samp>
+            </a>
+        </div>
+
+        <form id="formulario">
+            <div class="grid gap-6 mb-6 md:grid-cols-2 mt-5">
+
+                <div>
+                    <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del
+                        Platillo</label>
+                    <input type="text" id="nombre"
+                        class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Nombre Producto" required>
+                </div>
+                <div>
+                    <label for="precio"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
+                    <input type="number" id="precio"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Precio" required>
+                </div>
+                <div>
+                    <label for="cantidad"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción</label>
+                    <textarea id="descripcion" rows="4"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Write your thoughts here..."></textarea>
+                </div>
+                <div>
+                    <label for="imagen"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fotografia</label>
+                    <input type="file" id="imagen"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        accept="image/phg,image/jpeg" required>
+
+                </div>
+
+            </div>
+
+            <button type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex items-center justify-center"
+                id="agregarPlatillo">Agregar<img class="h-4 ml-2" src="../../../src/svg/nuevo.svg" alt="Agregar">
+            </button>
+
+        </form>
+    </div>
+    <script src="../platillo/js/nuevoPlatillo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

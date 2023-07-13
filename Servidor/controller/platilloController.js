@@ -9,9 +9,29 @@ const getPlatillos = async (req, res) => {
 
 //CREAR PLATILLO
 const agregarPlatillo = async (req, res) => {
-    const platillo = await Platillo.create(req.body)
-    res.json(platillo)
-}
+    const platilloData = req.body;
+    const platillo = await Platillo.create(platilloData);
+    
+    if (req.files && req.files.file) {
+        const EDFile = req.files.file;
+        EDFile.mv(`./src/img/${EDFile.name}`, error => {
+            if (error) return res.status(500).send({ msg: error });
+
+            return res.status(200).json({
+                msg: 'Platillo agregado y imagen cargada',
+                platillo: platillo,
+            });
+        });
+    } else {
+        return res.status(200).json({
+            msg: 'Platillo agregado (sin imagen)',
+            platillo: platillo,
+        });
+    }
+};
+
+
+
 
 //ACTUALIZAR PLATILLO
 const actualizarPlatillo = async (req, res) => {

@@ -33,8 +33,11 @@ router.post('/agregarMesa', mesaController.agregarMesa);
 router.post('disponibleMesa/:idMesa', mesaController.disponibleMesa)
 
 //Ruta Platillo
-router.get('/getPlatillos', platilloController.getPlatillos)
-router.put('/agregarPlatillo', platilloController.agregarPlatillo)
+router.get('/platillos', platilloController.getPlatillos)
+router.post('/agregarPlatillo', platilloController.agregarPlatillo)
 router.delete('/eliminarPlatillo/:idPlatillo', platilloController.eliminarPLatillo)
+
+//Ruta Cargar Imagen
+// router.post('/subirImagen', platilloController.subirImagen);
 
 module.exports = router

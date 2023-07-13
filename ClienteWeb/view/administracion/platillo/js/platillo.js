@@ -1,7 +1,7 @@
 //URL de servidor
 let urlApi = 'http://localhost:3000/'
 // Mostar Inventario
-let url = urlApi + 'inventario'
+let url = urlApi + 'platillos'
 fetch(url)
   .then(response => response.json())
   .then(data => mostarData(data))
@@ -13,19 +13,17 @@ const mostarData = (data) => {
   for (let i = 0; i < data.length; i++) {
     bodyInventario += `
         <tr class="listaInventario border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-          <td class="whitespace-nowrap dark:text-white px-6 py-4 font-medium">${data[i].idInventario}</td>
+          <td class="whitespace-nowrap dark:text-white px-6 py-4 font-medium">${data[i].idPlatillo}</td>
           <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].nombre}</td>
-          <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].fechaCaducidad.substring(0, 10)}</td>
-          <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].fechaIngreso.substring(0, 10)}</td>
           <td class="whitespace-nowrap dark:text-white px-6 py-4">$ ${data[i].precio}</td>
-          <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].cantidad}</td>
-          <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].disponible ? 'SI' : 'NO'}</td>
+          <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].descripcion}</td>
+          <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].imagen}</td>
           <td class="whitespace-nowrap dark:text-white px-6 py-4">
             <div class="flex space-x-4">
               <a class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" id="editarInventario" onclick="editarInventario(${data[i].idInventario})">
                 <img class="h-4" src="../../../src/svg/editar.svg" alt="Editar">
               </a>
-              <button onclick="eliminarInventarioFisico(${data[i].idInventario})" id="eliminarFisicoInventario" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              <button onclick="eliminarPlatillo(${data[i].idPlatillo})" id="eliminarFisicoInventario" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                 <img class="h-4" src="../../../src/svg/borrar.svg" alt="Eliminar">
               </button>
 
@@ -37,7 +35,7 @@ const mostarData = (data) => {
 
   document.getElementById('datosInventario').innerHTML = bodyInventario;
   
-  eliminarInventarioFisico = (idInventario) => {
+  eliminarPlatillo= (idInventario) => {
     Swal.fire({
       title: '¿Estás seguro de eliminar el registro?',
       showCancelButton: true,

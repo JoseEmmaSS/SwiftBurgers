@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../../../dist/output.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <title>Inventario</title>
+  <title>Platillos</title>
 </head>
 
 <body class="dark:bg-gray-600">
@@ -17,36 +17,25 @@
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <a href="#" class="flex items-center">
           <img src="../../../src/svg/icono_restaurante.svg" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
-          <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base">Restaurante</span>
+          <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base">Administración Platillos</span>
         </a>
 
         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li>
               <a href="#"
-                class="block text-gray-700 text-sm font-bold mb-1"> Inicio</a>
+                class="block py-2 pr-4 pl-3 text-gray-900 dark:text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0"
+                aria-current="page">Inicio</a>
             </li>
             <li>
-              <select class="block text-gray-700 text-sm font-bold mb-1" id="opcionesProducto" onchange="redirigirUsuario()">
-                <option>Gestionar administracion</option>
-                <option value="../inventario.html">inventario</option>
-                <!-- <option value="hoa.html">Chef</option> -->
-                <!-- <option value="cliente.html">Cliente</option>  -->
-              </select>
+              <a href="#"
+                class="block py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700 dark:text-white lg:bg-transparent lg:text-primary-700 lg:p-0">Opciones</a>
             </li>
             <li>
-              <select class="block text-gray-700 text-sm font-bold mb-1" id="opciones" onchange="redirigir()">
-                <option>Altas de usuario</option>
-                <option value="../users/propietario.html">Propietario</option>
-                <option value="../users/chef.html">Chef</option>
-                <option value="../users/cliente.html">Cliente</option>
-              </select>
+              <a href="#"
+                class="block py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700 dark:text-white lg:bg-transparent lg:text-primary-700 lg:p-0">Opciones</a>
             </li>
-            <li>
-              <img src="../../../src/img/Hamburger.jpg" class="rounded-full w-10 h-10">
 
-            </li>
-            
           </ul>
         </div>
       </div>
@@ -79,7 +68,7 @@
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
         <div>
-          <a href="../inventario/nuevoInventario.html"
+          <a href="../platillo/nuevoPlatillo.html"
             class="inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-8 rounded mr-2 h-10">Agregar
             <img class="ml-3 h-4" src="../../../src/svg/nuevo.svg" alt="Agregar">
           </a>
@@ -90,12 +79,9 @@
               <tr class="uppercase">
                 <th scope="col" class="px-6 py-4 dark:text-white">id</th>
                 <th scope="col" class="px-6 py-4 dark:text-white">Nombre</th>
-                <th scope="col" class="px-6 py-4 dark:text-white">Fecha de Caducidad</th>
-                <th scope="col" class="px-6 py-4 dark:text-white">Fecha de Ingreso</th>
                 <th scope="col" class="px-6 py-4 dark:text-white">Precio</th>
-                <th scope="col" class="px-6 py-4 dark:text-white">Cantidad</th>
-                <th scope="col" class="px-6 py-4 dark:text-white">Disponible</th>
-                <th scope="col" class="px-6 py-4 dark:text-white">Operaciones</th>
+                <th scope="col" class="px-6 py-4 dark:text-white">Descripción</th>
+                <th scope="col" class="px-6 py-4 dark:text-white">Fotografia</th>
               </tr>
             </thead>
             <tbody id="datosInventario">
@@ -106,17 +92,7 @@
     </div>
   </div>
 </body>
-<script src="../inventario/js/inventario.js"></script>
+<script src="../platillo/js/platillo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-  function redirigir() {
-  var select = document.getElementById("opciones");
-  var opcionSeleccionada = select.value;
-
-  if (opcionSeleccionada !== "") {
-    window.location.href = opcionSeleccionada;
-}
-}
-</script>
 
 </html>
