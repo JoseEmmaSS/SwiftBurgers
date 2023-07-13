@@ -5,7 +5,6 @@ let fileInput = document.getElementById('file');
 
 let imagen
 
-
 fileInput.addEventListener('change', e => {
   imagen = e.target.files[0];
   console.log(imagen)
@@ -18,7 +17,6 @@ fileInput.addEventListener('change', e => {
     renderImagen.readAsDataURL(imagen)
   }
 });
-
 
 nuevoProducto.addEventListener('click', async (event) => {
   event.preventDefault();
@@ -34,26 +32,23 @@ nuevoProducto.addEventListener('click', async (event) => {
   if(!nombre || !precio || !descripcion){
     Swal.fire('Llene todos los campos', '', 'warning');
     return
-  }
- 
+  } 
     let formData = new FormData();
     formData.append('nombre', nombre);
     formData.append('precio', precio);
     formData.append('descripcion', descripcion);
     formData.append('imagen' ,nombreImagen);
     formData.append('file', imagen);
-
-
+    
     try {
       let response = await fetch('http://localhost:3000/agregarPlatillo', {
         method: 'POST',
         body: formData,
       });
-
       if (response.ok) {
-        Swal.fire('Producto agregado al inventario', '', 'success');
+        Swal.fire('Producto agregado', '', 'success');
       } else {
-        console.log('Error al agregar el inventario');
+        console.log('Error al agregar el producto');
       }
     } catch (error) {
       console.log('Error en la conexión');

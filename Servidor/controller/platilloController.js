@@ -6,7 +6,6 @@ const getPlatillos = async (req, res) => {
     res.json(platillo)
 }
 
-
 //CREAR PLATILLO
 const agregarPlatillo = async (req, res) => {
     const platilloData = req.body;
@@ -35,9 +34,6 @@ const agregarPlatillo = async (req, res) => {
         });
     }
 };
-
-
-
 
 //ACTUALIZAR PLATILLO
 const actualizarPlatillo = async (req, res) => {
