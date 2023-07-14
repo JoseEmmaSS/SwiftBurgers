@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <title>Menu principal</title>
+        <link rel="stylesheet" href="../../dist/output.css">
+      </head>
+      <body>
+        <section>
+  <header class="bg-white space-y-4 p-4 sm:px-8 sm:py-6 lg:p-4 xl:px-8 xl:py-6">
+    
+    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+      <a href="#" class="flex items-center">
+        <img src="../../../src/svg/icono_restaurante.svg" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
+        <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base">Menu Principal</span>
+      </a>
+
+      <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
+        <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+          <li>
+            <a href="#"
+              class="block text-gray-700 text-sm font-bold mb-1"> Inicio</a>
+          </li>
+          <li>
+            <select class="block text-gray-700 text-sm font-bold mb-1" id="opcionesProducto" onchange="redirigirUsuario()">
+              <option value="#">Gestionar administracion</option>
+              <option value="../administracion/inventario/inventario.html">inventario</option>
+              <option value="../administracion/platillo/platillos.html">Platillos</option>
+              <!-- <option value="cliente.html">Cliente</option>  -->
+            </select>
+          </li>
+          <li>
+            <select class="block text-gray-700 text-sm font-bold mb-1" id="opciones" onchange="redirigir()">
+              <option value="#">Altas de usuario</option>
+              <option value="../administracion/users/propietario.html">Propietario</option>
+              <option value="../administracion/users/chef.html">Chef</option>
+              <option value="../administracion/users/cliente.html">Cliente</option>
+            </select>
+          </li>
+          <li>
+            <div class="relative">
+              <button id="menuButton" class="rounded-full w-10 h-10 focus:outline-none">
+                <img src="../../../src/img/Hamburger.jpg" class="rounded-full w-full h-full" alt="Imagen">
+              </button>
+              <div id="menuDropdown" class="absolute right-0 mt-2 py-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                <a href="../public/login.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cerrar sesión</a>
+              </div>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+
+    
+    
+  </header>
+  <div class="font-semibold text-slate-900">
+    <h2 class="text-3xl pb-3 font-italian">Apartado de cocina</h2>
+  </div>
+  <ul>
+  <div class="bg-slate-50 p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm leading-6">
+    <div class="grid grid-cols-2 gap-4">
+      <a href="../administracion/inventario/inventario.html" class="hover:bg-blue-500 hover:ring-blue-500 hover:shadow-md group rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm">
+        <dl class="grid grid-rows-2 items-center">
+          <div>
+            <dt class="sr-only">Inventario</dt>
+            <dd class="group-hover:text-white font-semibold text-slate-900">
+              Inventario
+            </dd>
+          </div>
+          <div>
+            <dt class="sr-only">Direccion a inventario</dt>
+            <dd class="group-hover:text-blue-200">Direccion a inventario</dd>
+          </div>
+        </dl>
+      </a>
+  
+      <a href="../administracion/platillo/platillos.html" class="hover:bg-blue-500 hover:ring-blue-500 hover:shadow-md group rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm">
+        <dl class="grid grid-rows-2 items-center">
+          <div>
+            <dt class="sr-only">Platillos</dt>
+            <dd class="group-hover:text-white font-semibold text-slate-900">
+              Platillos
+            </dd>
+          </div>
+          <div>
+            <dt class="sr-only">Direccion a platillos</dt>
+            <dd class="group-hover:text-blue-200">Direccion a platillos</dd>
+          </div>
+        </dl>
+      </a>
+    </div>
+  </div>
+</ul>
+<div class="font-semibold text-slate-900">
+    <h2 class="text-3xl pb-3 font-italian">Apartado de usuarios</h2>
+  </div>
+<ul>
+  <div class="bg-slate-50 p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm leading-6">
+    <div class="grid grid-cols-3 gap-4">
+      <a href="../administracion/users/propietario.html" class="hover:bg-blue-500 hover:ring-blue-500 hover:shadow-md group rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm">
+        <dl class="grid grid-rows-3 items-center">
+          <div>
+            <dt class="sr-only">Propietario</dt>
+            <dd class="group-hover:text-white font-semibold text-slate-900">
+                Propietario
+            </dd>
+          </div>
+          <div>
+            <dt class="sr-only">Direccion a propietario</dt>
+            <dd class="group-hover:text-blue-200">Direccion a propietario</dd>
+          </div>
+        </dl>
+      </a>
+  
+      <a href="../administracion/users/chef.html" class="hover:bg-blue-500 hover:ring-blue-500 hover:shadow-md group rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm">
+        <dl class="grid grid-rows-3 items-center">
+          <div>
+            <dt class="sr-only">Chef</dt>
+            <dd class="group-hover:text-white font-semibold text-slate-900">
+              Chef
+            </dd>
+          </div>
+          <div>
+            <dt class="sr-only">Direccion a chef</dt>
+            <dd class="group-hover:text-blue-200">Direccion a chef</dd>
+          </div>
+        </dl>
+      </a>
+
+      <a href="../administracion/users/cliente.html" class="hover:bg-blue-500 hover:ring-blue-500 hover:shadow-md group rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm">
+        <dl class="grid grid-rows-3 items-center">
+          <div>
+            <dt class="sr-only">Cliente</dt>
+            <dd class="group-hover:text-white font-semibold text-slate-900">
+              Cliente
+            </dd>
+          </div>
+          <div>
+            <dt class="sr-only">Direccion a cliente</dt>
+            <dd class="group-hover:text-blue-200">Direccion a cliente</dd>
+          </div>
+        </dl>
+      </a>
+
+    </div>
+  </div>
+</ul>
+
+</section>
+
+<script>
+  function redirigir() {
+  var select = document.getElementById("opciones");
+  var opcionSeleccionada = select.value;
+
+  if (opcionSeleccionada !== "") {
+    window.location.href = opcionSeleccionada;
+}
+}
+
+  function redirigirUsuario() {
+  var select = document.getElementById("opcionesProducto");
+  var opcionSeleccionada = select.value;
+
+  if (opcionSeleccionada !== "") {
+    window.location.href = opcionSeleccionada;
+}
+}
+</script>
+
+<script>
+const menuButton = document.getElementById('menuButton');
+const menuDropdown = document.getElementById('menuDropdown');
+
+menuButton.addEventListener('click', function() {
+  menuDropdown.classList.toggle('hidden');
+});
+</script>
+          
+      </body>
+    </html>

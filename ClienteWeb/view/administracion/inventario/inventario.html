@@ -17,34 +17,40 @@
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <a href="#" class="flex items-center">
           <img src="../../../src/svg/icono_restaurante.svg" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
-          <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base">Restaurante</span>
+          <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base">Administracion Inventario</span>
         </a>
 
         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li>
-              <a href="#"
+              <a href="../index.html"
                 class="block text-gray-700 text-sm font-bold mb-1"> Inicio</a>
             </li>
             <li>
               <select class="block text-gray-700 text-sm font-bold mb-1" id="opcionesProducto" onchange="redirigirUsuario()">
-                <option>Gestionar administracion</option>
-                <option value="../inventario.html">inventario</option>
-                <!-- <option value="hoa.html">Chef</option> -->
+                <option value="#">Gestionar administracion</option>
+                <option value="../inventario/inventario.html">inventario</option>
+                <option value="../platillo/platillos.html">Platillos</option>
                 <!-- <option value="cliente.html">Cliente</option>  -->
               </select>
             </li>
             <li>
               <select class="block text-gray-700 text-sm font-bold mb-1" id="opciones" onchange="redirigir()">
-                <option>Altas de usuario</option>
+                <option value="#">Altas de usuario</option>
                 <option value="../users/propietario.html">Propietario</option>
                 <option value="../users/chef.html">Chef</option>
                 <option value="../users/cliente.html">Cliente</option>
               </select>
             </li>
             <li>
-              <img src="../../../src/img/Hamburger.jpg" class="rounded-full w-10 h-10">
-
+              <div class="relative">
+                <button id="menuButton" class="rounded-full w-10 h-10 focus:outline-none">
+                  <img src="../../../src/img/Hamburger.jpg" class="rounded-full w-full h-full" alt="Imagen">
+                </button>
+                <div id="menuDropdown" class="absolute right-0 mt-2 py-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                  <a href="../../public/login.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cerrar sesión</a>
+                </div>
+              </div>
             </li>
             
           </ul>
@@ -108,15 +114,33 @@
 </body>
 <script src="../inventario/js/inventario.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-  function redirigir() {
-  var select = document.getElementById("opciones");
-  var opcionSeleccionada = select.value;
+<script src="js/clienteNuevo.js"></script>
+  <script>
+    function redirigir() {
+    var select = document.getElementById("opciones");
+    var opcionSeleccionada = select.value;
 
-  if (opcionSeleccionada !== "") {
-    window.location.href = opcionSeleccionada;
+    if (opcionSeleccionada !== "") {
+      window.location.href = opcionSeleccionada;
+  }
 }
-}
-</script>
+
+    function redirigirUsuario() {
+    var select = document.getElementById("opcionesProducto");
+    var opcionSeleccionada = select.value;
+
+    if (opcionSeleccionada !== "") {
+      window.location.href = opcionSeleccionada;
+  }
+  }
+  </script>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const menuDropdown = document.getElementById('menuDropdown');
+  
+    menuButton.addEventListener('click', function() {
+      menuDropdown.classList.toggle('hidden');
+    });
+  </script>
 
 </html>

@@ -23,19 +23,36 @@
         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li>
-              <a href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 dark:text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0"
-                aria-current="page">Inicio</a>
+              <a href="../index.html"
+                class="block text-gray-700 text-sm font-bold mb-1"> Inicio</a>
             </li>
             <li>
-              <a href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700 dark:text-white lg:bg-transparent lg:text-primary-700 lg:p-0">Opciones</a>
+              <select class="block text-gray-700 text-sm font-bold mb-1" id="opcionesProducto" onchange="redirigirUsuario()">
+                <option value="#">Gestionar administracion</option>
+                <option value="../inventario/inventario.html">inventario</option>
+                <option value="../platillo/platillos.html">Platillos</option>
+                <!-- <option value="cliente.html">Cliente</option>  -->
+              </select>
             </li>
             <li>
-              <a href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700 dark:text-white lg:bg-transparent lg:text-primary-700 lg:p-0">Opciones</a>
+              <select class="block text-gray-700 text-sm font-bold mb-1" id="opciones" onchange="redirigir()">
+                <option value="#">Altas de usuario</option>
+                <option value="../users/propietario.html">Propietario</option>
+                <option value="../users/chef.html">Chef</option>
+                <option value="../users/cliente.html">Cliente</option>
+              </select>
             </li>
-
+            <li>
+              <div class="relative">
+                <button id="menuButton" class="rounded-full w-10 h-10 focus:outline-none">
+                  <img src="../../../src/img/Hamburger.jpg" class="rounded-full w-full h-full" alt="Imagen">
+                </button>
+                <div id="menuDropdown" class="absolute right-0 mt-2 py-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                  <a href="../../public/login.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cerrar sesión</a>
+                </div>
+              </div>
+            </li>
+            
           </ul>
         </div>
       </div>
@@ -94,5 +111,32 @@
 </body>
 <script src="../platillo/js/platillo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function redirigir() {
+  var select = document.getElementById("opciones");
+  var opcionSeleccionada = select.value;
+
+  if (opcionSeleccionada !== "") {
+    window.location.href = opcionSeleccionada;
+}
+}
+
+  function redirigirUsuario() {
+  var select = document.getElementById("opcionesProducto");
+  var opcionSeleccionada = select.value;
+
+  if (opcionSeleccionada !== "") {
+    window.location.href = opcionSeleccionada;
+}
+}
+</script>
+<script>
+  const menuButton = document.getElementById('menuButton');
+  const menuDropdown = document.getElementById('menuDropdown');
+
+  menuButton.addEventListener('click', function() {
+    menuDropdown.classList.toggle('hidden');
+  });
+</script>
 
 </html>
