@@ -46,7 +46,7 @@ const mostarData = (data) => {
       cancelButtonColor: '#3085d6',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(url + '/' + idInventario, {
+        fetch(urlApi + 'eliminarPlatillo/' + idInventario, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
