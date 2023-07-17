@@ -31,7 +31,11 @@ const mostarData = (data) => {
           <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].nombre}</td>
           <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">$ ${data[i].precio}</td>
           <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].descripcion}</td>
-          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4"><img id="imagenPlatillo${data[i].idPlatillo}" class="h-20 w-auto" src="" alt="Imagen del platillo"></td>
+          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">
+            <div class="flex justify-center items-center">
+              <img id="imagenPlatillo${data[i].idPlatillo}" class="h-20 w-auto rounded-xl" src="" alt="Imagen del platillo">
+            </div>
+          </td>
           <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">
             <div class="flex space-x-4">
               <a class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-lg font-bold py-2 px-4 rounded mr-2" id="editarInventario" onclick="editarInventario(${data[i].idPlatillo})">

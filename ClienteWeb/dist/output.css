@@ -880,6 +880,17 @@ video {
   border-radius: 0.5rem;
 }
 
+<<<<<<< HEAD
+=======
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+>>>>>>> 3b0705049ea194b8fc024ded7aef5168a03730cd
 .border {
   border-width: 1px;
 }
