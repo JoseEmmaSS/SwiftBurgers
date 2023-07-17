@@ -26,7 +26,7 @@ const mostarData = (data) => {
 
   for (let i = 0; i < data.length; i++) {
     bodyInventario += `
-        <tr class="listaInventario border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+        <tr class="listaInventario border-b border-black duration-300 ease-in-out hover:bg-yellow-50 dark:border-neutral-500 dark:hover:bg-neutral-600">
           <td class="whitespace-nowrap dark:text-white px-6 py-4 font-medium">${data[i].idPlatillo}</td>
           <td class="whitespace-nowrap dark:text-white px-6 py-4">${data[i].nombre}</td>
           <td class="whitespace-nowrap dark:text-white px-6 py-4">$ ${data[i].precio}</td>
