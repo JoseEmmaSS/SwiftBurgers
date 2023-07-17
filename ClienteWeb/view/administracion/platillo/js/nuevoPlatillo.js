@@ -3,7 +3,7 @@ const nuevoProducto = document.getElementById('agregarPlatillo')
 
 let fileInput = document.getElementById('file');
 
-let imagen
+let imagen;
 
 fileInput.addEventListener('change', e => {
   imagen = e.target.files[0];

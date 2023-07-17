@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mostrar Imagen</title>
+</head>
+
+<body>
+    <h1>Imagen del Platillo</h1>
+    <img id="imagenPlatillo" src="" alt="Imagen del platillo">
+    <script>
+
+        image = (id) => {
+            fetch(`http://localhost:3000/platilloImg/${id}`)
+                .then(response => response.blob())
+                .then(blob => {
+                    const img = document.getElementById('imagenPlatillo');
+                    img.src = URL.createObjectURL(blob);
+                    document.body.appendChild(img);
+                })
+                .catch(error => console.error(error));
+        }
+
+        image(102)
+
+    </script>
+</body>
+
+</html>

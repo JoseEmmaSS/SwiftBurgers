@@ -1,4 +1,5 @@
 const Platillo = require('../models/Platillo')
+const path = require('path');
 
 //MOSTRAR PLATILLO
 const getPlatillos = async (req, res) => {
@@ -6,11 +7,82 @@ const getPlatillos = async (req, res) => {
     res.json(platillo)
 }
 
+//MOSTAR IMAGENES
+const fs = require('fs');
+
+const getImagenes = async (req, res) => {
+    const platillos = await Platillo.findAll();
+
+    const directorioActual = __dirname;
+    const directorioPadre = path.resolve(directorioActual, '..');
+
+    const imagenesPromises = platillos.map(platillo => {
+        const rutaImagen = path.join(directorioPadre, 'src', 'img', platillo.imagen);
+        console.log(`Leyendo imagen: ${rutaImagen}`);
+
+        return new Promise((resolve, reject) => {
+            fs.readFile(rutaImagen, { encoding: 'base64' }, (err, data) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    const base64Data = data.toString('base64');
+                    const imageDataUrl = `data:image/jpeg;base64,${base64Data}`;
+                    resolve(imageDataUrl);
+                }
+            });
+        });
+    });
+
+    try {
+        const imagenes = await Promise.all(imagenesPromises);
+        res.send(imagenes);
+    } catch (error) {
+        console.error('Error al obtener las imágenes:', error);
+        res.status(500).send('Error al obtener las imágenes');
+    }
+};
+
+
+//OBTENER IMAGEN ALMACENADA POR ID
+const getImagen = async (req, res) => {
+    const { idPlatillo } = req.params
+
+    const platillo = await Platillo.findByPk(idPlatillo)
+    const directorioActual = __dirname;
+    const directorioPadre = path.resolve(directorioActual, '..');
+
+    if (platillo) {
+        res.sendFile(path.join(directorioPadre, 'src', 'img', platillo.imagen));
+
+    } else {
+        res.sendFile(path.join(directorioPadre, 'src', 'img', 'image-not-found.jpg'))
+    }
+}
+
+
+//MOSTAR PLATILLO POR ID
+const getPlatilloById = async (req, res) => {
+    const { idPlatillo } = req.params
+    const platillo = await Platillo.findByPk(idPlatillo)
+
+    const directorioActual = __dirname;
+    const directorioPadre = path.resolve(directorioActual, '..');
+
+    if (platillo) {
+        res.json(platillo)
+        res.sendFile(path.join(directorioPadre, 'src', 'img', platillo.imagen));
+    } else {
+        res.status(400).json({
+            msg: `Platillo no encontrado ${idPlatillo}`
+        })
+        res.sendFile(path.join(directorioPadre, 'src', 'img', 'image-not-found.jpg'))
+    }
+}
+
 //CREAR PLATILLO
 const agregarPlatillo = async (req, res) => {
     const platilloData = req.body;
     const platillo = await Platillo.create(platilloData);
-    
     if (req.files && req.files.file) {
         const EDFile = req.files.file;
         const fileExtension = EDFile.name.split('.').pop();
@@ -18,7 +90,7 @@ const agregarPlatillo = async (req, res) => {
 
         EDFile.mv(`./src/img/${newFileName}`, error => {
             if (error) return res.status(500).send({ msg: error });
-            
+
             platillo.imagen = newFileName;
             platillo.save();
 
@@ -55,7 +127,6 @@ const actualizarPlatillo = async (req, res) => {
             mgs: 'Error al actuaizar el platillo'
         })
     }
-
 }
 
 //ELIMINAR PLATILLO
@@ -63,7 +134,7 @@ const eliminarPLatillo = async (req, res) => {
     const { idPlatillo } = req.params
     const platillo = await Platillo.findByPk(idPlatillo)
 
-    if(!platillo){
+    if (!platillo) {
         return res.status(500).json({
             ms: `No existe el platillo con id: ${idPlatillo}`
         })
@@ -73,8 +144,11 @@ const eliminarPLatillo = async (req, res) => {
 }
 
 module.exports = {
+    getImagenes,
     getPlatillos,
     agregarPlatillo,
+    getImagen,
     actualizarPlatillo,
-    eliminarPLatillo
+    eliminarPLatillo,
+    getPlatilloById
 }
