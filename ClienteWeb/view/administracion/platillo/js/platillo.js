@@ -13,8 +13,6 @@ const image = (id) => {
 };
 
 
-
-
 // Mostar Inventario
 let url = urlApi + 'platillo'
 fetch(url)
