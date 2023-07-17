@@ -579,6 +579,10 @@ video {
   z-index: 30;
 }
 
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
 .m-10 {
   margin: 2.5rem;
 }
@@ -664,6 +668,10 @@ video {
   margin-top: 0.3rem;
 }
 
+.mt-9 {
+  margin-top: 2.25rem;
+}
+
 .block {
   display: block;
 }
@@ -726,6 +734,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-40 {
+  height: 10rem;
 }
 
 .w-10 {
@@ -1989,6 +2001,10 @@ video {
 
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .sm\:px-6 {
