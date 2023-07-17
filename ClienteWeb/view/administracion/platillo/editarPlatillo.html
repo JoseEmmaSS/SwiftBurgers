@@ -8,56 +8,72 @@
   <title>Editar Inventario</title>
 </head>
 
-<body class="dark:bg-gray-600">
+<body class="bg-yellow-50 dark:bg-gray-600">
   <header class="mb-4">
-    <nav class="bg-white dark:bg-gray-700 dark:text-white border-gray-200  px-4 lg:px-6 py-5 shadow-md">
-      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-        <a href="#" class="flex items-center">
-          <img src="../../../src/svg/icono_restaurante.svg" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
-          <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base">Editar Platillo</span>
-        </a>
+    <nav class="border-gray-200 dark:bg-gray-700 px-4 lg:px-6 py-5 shadow-md bg-amber-400">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <a href="#" class="flex items-center">
+                <img src="../../../src/svg/icono_restaurante.svg" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
+                <span class="self-center text-4xl font-bold whitespace-nowrap dark:text-base text-white dark:text-white">Editar Platillo</span>
+            </a>
 
-        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
-          <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-            <li>
-              <a href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 dark:text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0"
-                aria-current="page">Inicio</a>
-            </li>
-            <li>
-              <a href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700 dark:text-white lg:bg-transparent lg:text-primary-700 lg:p-0">Opciones</a>
-            </li>
-            <li>
-              <a href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700 dark:text-white lg:bg-transparent lg:text-primary-700 lg:p-0">Opciones</a>
-            </li>
-
-          </ul>
+            <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
+                <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                  <li>
+                    <a href="../index.html"
+                      class="block text-sm font-bold mb-1 bg-amber-400 dark:bg-gray-700 text-white"
+                      aria-current="page">Inicio</a>
+                  </li>
+                  <li>
+                    <select class="block text-sm font-bold mb-1 bg-amber-400 dark:bg-gray-700 text-white" id="opcionesProducto" onchange="redirigirUsuario()">
+                      <option value="#">Gestionar administracion</option>
+                      <option value="../inventario/inventario.html">Inventario</option>
+                      <option value="../platillo/platillos.html">Platillos</option>
+                      <!-- <option value="cliente.html">Cliente</option>  -->
+                    </select>
+                  </li>
+                  <li>
+                    <select class="block text-sm font-bold mb-1 bg-amber-400 dark:bg-gray-700 text-white" id="opciones" onchange="redirigir()">
+                      <option value="#">Altas de usuario</option>
+                      <option value="../users/propietario.html">Propietario</option>
+                      <option value="../users/chef.html">Chef</option>
+                      <option value="../users/cliente.html">Cliente</option>
+                    </select>
+                  </li>
+                  <li>
+                    <div class="relative">
+                      <button id="menuButton" class="rounded-full w-10 h-10 focus:outline-none">
+                        <img src="../../../src/img/Hamburger.jpg" class="rounded-full w-full h-full" alt="Imagen">
+                      </button>
+                      <div id="menuDropdown" class="absolute right-0 mt-2 py-2 w-48 bg-yellow-400 border border-yellow-400 rounded-lg shadow-lg hidden">
+                        <a href="../../public/login.html" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar sesión</a>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
         </div>
-      </div>
     </nav>
-  </header>
+</header>
 
   <div class="m-10">
-    <div>
-      <a href="../platillo/platillos.html"
-        class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded mr-2 h-10">
-        <img class="h-4 pr-2" src="../../../src/svg/regresar.svg" alt="Nuevo"><samp>Regresar</samp>
-      </a>
-    </div>
+    
+      <div class="border-gray-200 dark:bg-gray-700 px-4 lg:px-6 py-5 shadow-md">
+        <a href="../platillo/platillos.html"
+          class="inline-flex items-center bg-yellow-700 hover:bg-yellow-800 text-white font-bold py-3 px-8 rounded mr-2 h-10">
+          <img class="h-4 pr-2" src="../../../src/svg/regresar.svg" alt="Nuevo"><samp>Regresar</samp>
+        </a>
     <form id="formulario">
       <div class="grid gap-6 mb-6 md:grid-cols-2 mt-5">
 
-          <div>
-              <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del Platillo</label>
+        <div>
+          <label for="nombre" class="block mb-2 text-xl text-black dark:text-white font-bold">Nombre del Platillo</label>
               <input type="text" id="nombre"
                   class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nombre Producto" required>
           </div>
           <div>
-              <label for="precio"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
+              <label for="precio" class="block mb-2 text-xl text-black dark:text-white font-bold">Precio</label>
               <input type="number" id="precio"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Precio" required>
@@ -65,14 +81,13 @@
 
       </div>
       <div>
-          <label for="descripcion"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción</label>
+          <label for="descripcion" class="block mb-2 text-xl text-black dark:text-white font-bold">Descripción</label>
           <textarea id="descripcion" rows="4"
               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Redacta un descripción del platillo"></textarea>
       </div>
       <div class="mt-4">
-          <label for="imagen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fotografia</label>
+          <label for="imagen" class="block mb-2 text-xl text-black dark:text-white font-bold">Fotografia</label>
           <input type="file" id="file" 
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" accept="image/phg,image/jpeg" required>
       </div>
@@ -81,7 +96,7 @@
       </div>
       <div class="mt-4">
           <button type="submit"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex items-center justify-center" id="editarPlatillo">Agregar<img class="h-4 ml-2" src="../../../src/svg/nuevo.svg" alt="Agregar"></button>
+          class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 flex items-center justify-center" id="agregarPlatillo">Agregar<img class="h-4 ml-2" src="../../../src/svg/nuevo.svg" alt="Agregar"></button>
       </div>
 
   </form>
