@@ -16,7 +16,7 @@
         .menu-icon {
             width: 30px;
             height: 30px;
-            background-image: url("../../../src/svg/hamburger-2-svgrepo-com.svg");
+            background-image: url("../../../src/svg/hamburger-svgrepo-com.svg");
             background-size: cover;
             cursor: pointer;
             margin-left: auto;
@@ -28,9 +28,9 @@
             right: 0;
             z-index: 999;
             display: none;
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
+            background-color: #fde68a;
             padding: 10px;
+            border-radius: 4px;
         }
 
         .menu-items a {
@@ -40,19 +40,19 @@
     </style>
     <title>Restaurante</title>
 </head>
-<body class="bg-amber-50">
+<body class="bg-amber-50 dark:bg-gray-700">
     <header>
-        <nav class="bg-yellow-400 border-gray-200 px-4 lg:px-6 py-5 shadow-md">
+        <nav class="bg-yellow-400 border-gray-200 px-4 lg:px-6 py-5 shadow-md dark:bg-gray-600">
             <div class="header-container mx-auto max-w-screen-xl">
                 <a href="#" class="flex items-center">
                     <img src="../../../src/img/swiftburger1.png" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
                     <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base text-white">Restaurante</span>
                 </a>
                 <div class="menu-icon"></div>
-                <div class="menu-items">
-                    <a href="#" class="py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700">Inicio</a>
-                    <a href="#" class="py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700">En Familia</a>
-                    <a href="#" class="py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700">Nosotros</a>
+                <div class="menu-items bg-yellow-600">
+                    <a href="#" class="py-2 pr-4 pl-3 text-gray-900 font-bold rounded bg-primary-700 transition ease-in-out delay-150 bg-blue-yellow-400 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-500 duration-300">Inicio</a>
+                    <a href="#" class="py-2 pr-4 pl-3 text-gray-900 font-bold rounded bg-primary-700 transition ease-in-out delay-150 bg-blue-yellow-400 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-500 duration-300">En Familia</a>
+                    <a href="#" class="py-2 pr-4 pl-3 text-gray-900 font-bold rounded bg-primary-700 transition ease-in-out delay-150 bg-blue-yellow-400 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-500 duration-300">Nosotros</a>
                 </div>
             </div>
         </nav>
