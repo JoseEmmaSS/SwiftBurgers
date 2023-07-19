@@ -30,11 +30,16 @@ router.post('/agregarCliente', clienteController.agregarCliente)
 
 //Ruta Mesa
 router.post('/agregarMesa', mesaController.agregarMesa);
-router.post('disponibleMesa/:idMesa', mesaController.disponibleMesa)
+router.put('disponibleMesa/:idMesa', mesaController.disponibleMesa)
 
 //Ruta Platillo
-router.get('/getPlatillos', platilloController.getPlatillos)
-router.put('/agregarPlatillo', platilloController.agregarPlatillo)
-router.delete('/eliminarPlatillo/:idPlatillo', platilloController.eliminarPLatillo)
+router.get('/platillo', platilloController.getPlatillos)
+router.get('/getImagenes', platilloController.getImagenes)
+router.get('/platillo/:idPlatillo', platilloController.getPlatilloById)
+router.get('/platilloImg/:idPlatillo', platilloController.getImagen)
+router.post('/agregarPlatillo', platilloController.agregarPlatillo)
+router.put('/platillo/:idPlatillo', platilloController.actualizarPlatillo)
+router.delete('/platillo/:idPlatillo', platilloController.eliminarPLatillo)
+
 
 module.exports = router

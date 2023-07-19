@@ -18,7 +18,4 @@ const db = new sequelize(process.env.BD_NOMBRE, process.env.BD_USER, process.env
     operatorAliases: false
 });
 
-
-
-
 module.exports = db;

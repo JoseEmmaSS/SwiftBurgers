@@ -19,6 +19,10 @@ const Platillo = db.define('platillo', {
     descripcion: {
         type: DataTypes.TEXT,
         allowNull: true
+    },
+    imagen: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {
     tableName: 'platillo',
