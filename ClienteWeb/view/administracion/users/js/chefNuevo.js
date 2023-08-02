@@ -14,6 +14,15 @@ nuevoPropietario.addEventListener('click', async (event) => {
   let nombreUsuario = document.getElementById('nombreUsuario').value;
   let salario = document.getElementById('salario').value;
 
+ 
+
+  if (!nombre || !apellidoPaterno || !apellidoMaterno || !direccion || !numeroTelefono || !correo || !password || !nombreUsuario || !salario) {
+    Swal.fire('Llene los campos para agregar al nuevo chef', '', 'warning');
+    return;
+  }
+
+
+
 
   let chefs = {
     nombre: nombre,
@@ -39,13 +48,20 @@ nuevoPropietario.addEventListener('click', async (event) => {
         'Content-Type': 'application/json'
       }
     });
+    
 
     if (response.ok) {
-      console.log('Inventario agregado exitosamente');
-    } else {
-      console.log('Error al agregar el inventario');
-    }
-  } catch (error) {
-    console.log('Error en la conexión');
+      console.log('Chef agregado exitosamente');
+  } else {
+      const responseData = await response.json();
+      if (responseData.error) {
+          Swal.fire(responseData.msg, '', 'warning');
+      } else {
+        Swal.fire(responseData.msg, '', 'Repeated mail');
+          console.log('Error al agregar al nuevo chef');
+      }
   }
+} catch (error) {
+  console.log('Error en la conexión');
+}
 });

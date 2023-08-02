@@ -30,7 +30,7 @@ const nuevoChef = async (req, res) => {
 
         if (existeCorreo) {
             return res.status(400).json({
-                msg: 'Ya existe el correo' + body.correo
+                msg: 'Ya existe el correo \"' + body.correo + "\" por favor introduca otro"
             })
         }
         //Crear Chef

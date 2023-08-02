@@ -10,6 +10,8 @@ const router = express.Router()
 router.get('/inicio', propietarioController.inicio);
 
 //Ruta Propietario
+router.get('/propietario', propietarioController.getPropietario);
+router.get('/propietario/:idPropietario', platilloController.getPlatilloById)
 router.post('/nuevoPropietario', propietarioController.nuevoPropietario);
 
 //Ruta Chef

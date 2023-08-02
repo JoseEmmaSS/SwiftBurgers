@@ -19,39 +19,40 @@
         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li>
-              <a href="#" class="block text-lg font-bold mb-1 bg-amber-400 dark:bg-gray-700 text-white"> Inicio</a>
+              <a href="#" class="block text-lg font-bold mb-1 bg-amber-400 dark:bg-gray-700 text-white">
+                Inicio</a>
             </li>
             <li>
               <select class="block text-lg font-bold mb-1 bg-amber-400 dark:bg-gray-700 text-white"
                 id="opcionesProducto" onchange="redirigirUsuario()">
-                <option value="#">Gestionar administracion</option>
-                <option value="../administracion/inventario/inventario.html">inventario</option>
-                <option value="../administracion/platillo/platillos.html">Platillos</option>
+                <option class="font-bold" value="#">Gestionar administracion</option>
+                <option class="bg-yellow-100 text-black " value="../administracion/inventario/inventario.html">Inventario</option>
+                <option class="bg-yellow-100 text-black " value="../administracion/platillo/platillos.html">Platillos</option>
                 <!-- <option value="cliente.html">Cliente</option>  -->
               </select>
             </li>
             <li>
               <select class="block text-lg font-bold mb-1 bg-amber-400 dark:bg-gray-700 text-white" id="opciones"
                 onchange="redirigir()">
-                <option value="#">Altas de usuario</option>
-                <option value="../administracion/users/propietario.html">Propietario</option>
-                <option value="../administracion/users/chef.html">Chef</option>
-                <option value="../administracion/users/cliente.html">Cliente</option>
+                <option class="font-bold" value="#">Altas de usuario</option>
+                <option class="bg-yellow-100 text-black " value="../administracion/users/propietario.html">Propietario</option>
+                <option class="bg-yellow-100 text-black " value="../administracion/users/chef.html">Chef</option>
+                <option class="bg-yellow-100 text-black " value="../administracion/users/cliente.html">Cliente</option>
               </select>
             </li>
-
             <li>
               <div class="relative">
                 <button id="menuButton" class="rounded-full w-10 h-10 focus:outline-none">
                   <img src="../../../src/img/Hamburger.jpg" class="rounded-full w-full h-full" alt="Imagen">
                 </button>
                 <div id="menuDropdown"
-                  class="absolute right-0 mt-2 py-2 w-48 bg-yellow-400 dark:bg-slate-600 dark:hover:bg-gray-400 border border-yellow-400 rounded-lg shadow-lg hidden">
-                  <a href="../public/login.html" class="block px-4 py-2 hover:bg-yellow-600 dark:hover:bg-gray-400 text-white">Cerrar
+                  class="absolute right-0 mt-2 py-2 w-48 bg-yellow-400 border border-yellow-400 rounded-lg shadow-lg hidden">
+                  <a href="../../public/login.html" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar
                     sesión</a>
                 </div>
               </div>
             </li>
+
           </ul>
         </div>
       </div>

@@ -7,6 +7,10 @@ nuevoPropietario.addEventListener('click', async (event) => {
   let nombre = document.getElementById('nombre').value;
   let mesa = document.getElementById('mesa').value;
 
+  if (!nombre || !mesa) {
+    Swal.fire('Llene los campos para agregar al nuevo cliente', '', 'warning');
+    return;
+  }
 
   let cliente = {
     nombre: nombre,

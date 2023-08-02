@@ -5,6 +5,11 @@ const inicio = (req, res) => {
     res.send('Rutas funcionando')
 }
 
+const getPropietario = async (req, res) => {
+    const propietario = await Propietario.findAll()
+    res.json(propietario)
+}
+
 //FUNCIONES PARA CREAR REGISTRO
 const nuevoPropietario = async (req, res) => {
     const { body } = req;
@@ -19,7 +24,7 @@ const nuevoPropietario = async (req, res) => {
 
         if (existeCorreo) {
             return res.status(400).json({
-                msg: 'Ya existe el correo ' + body.correo
+                msg: 'Ya existe el correo \"' + body.correo + "\" por favor introduca otro"
             })
         }
         const propietario = await Propietario.create(req.body)
@@ -34,5 +39,6 @@ const nuevoPropietario = async (req, res) => {
 
 module.exports = {
     inicio,
+    getPropietario,
     nuevoPropietario,
 }

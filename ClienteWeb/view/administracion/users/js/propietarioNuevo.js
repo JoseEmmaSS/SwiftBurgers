@@ -1,6 +1,6 @@
 // Agregar Propietario
 
-const nuevoPropietario = document.getElementById('agregarChef')
+const nuevoPropietario = document.getElementById('agregarPropietario')
 
 nuevoPropietario.addEventListener('click', async (event) => {
   event.preventDefault();
@@ -14,6 +14,10 @@ nuevoPropietario.addEventListener('click', async (event) => {
   let nombreUsuario = document.getElementById('nombreUsuario').value;
   let salario = document.getElementById('salario').value;
 
+  if (!nombre || !apellidoPaterno || !apellidoMaterno || !direccion || !numeroTelefono || !correo || !password || !nombreUsuario || !salario) {
+    Swal.fire('Llene los campos para agregar al nuevo propietario', '', 'warning');
+    return;
+  }
 
   let inventario = {
     nombre: nombre,
@@ -32,7 +36,7 @@ nuevoPropietario.addEventListener('click', async (event) => {
   console.log(propietarioJSON);
 
   try {
-    let response = await fetch('http://localhost:3000/nuevoChef', {
+    let response = await fetch('http://localhost:3000/nuevoPropietario', {
       method: 'POST',
       body: propietarioJSON,
       headers: {
@@ -41,11 +45,17 @@ nuevoPropietario.addEventListener('click', async (event) => {
     });
 
     if (response.ok) {
-      console.log('Inventario agregado exitosamente');
-    } else {
-      console.log('Error al agregar el inventario');
-    }
-  } catch (error) {
-    console.log('Error en la conexión');
+      console.log('Propietario agregado exitosamente');
+  } else {
+      const responseData = await response.json();
+      if (responseData.error) {
+          Swal.fire(responseData.msg, '', 'warning');
+      } else {
+        Swal.fire(responseData.msg, '', 'Repeated mail');
+        console.log('Error al agregar al nuevo propietario');
+      }
   }
+} catch (error) {
+  console.log('Error en la conexión');
+}
 });
