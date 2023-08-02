@@ -9,7 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
@@ -20,9 +19,10 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.4.2",
     "sequelize": "^6.32.1",
-    "sharp": "^0.32.3"
+    "sharp": "^0.32.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
-  }
+  },
+  "description": ""
 }

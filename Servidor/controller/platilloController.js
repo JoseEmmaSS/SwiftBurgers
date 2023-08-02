@@ -1,4 +1,5 @@
 const Platillo = require('../models/Platillo')
+const sharp = require('sharp');
 const path = require('path');
 
 //MOSTRAR PLATILLO
@@ -88,17 +89,20 @@ const agregarPlatillo = async (req, res) => {
         const fileExtension = EDFile.name.split('.').pop();
         const newFileName = `${platillo.idPlatillo}_${platilloData.nombre}_${Date.now()}.${fileExtension}`;
 
-        EDFile.mv(`./src/img/${newFileName}`, error => {
-            if (error) return res.status(500).send({ msg: error });
+        // Utiliza sharp para redimensionar la imagen antes de guardarla
+        sharp(EDFile.data)
+            .resize(800, 600)
+            .toFile(`./src/img/${newFileName}`, (error, info) => {
+                if (error) return res.status(500).send({ msg: error });
 
-            platillo.imagen = newFileName;
-            platillo.save();
+                platillo.imagen = newFileName;
+                platillo.save();
 
-            return res.status(200).json({
-                msg: 'Platillo agregado y imagen cargada',
-                platillo: platillo,
+                return res.status(200).json({
+                    msg: 'Platillo agregado e imagen cargada',
+                    platillo: platillo,
+                });
             });
-        });
     } else {
         return res.status(200).json({
             msg: 'Platillo agregado (sin imagen)',

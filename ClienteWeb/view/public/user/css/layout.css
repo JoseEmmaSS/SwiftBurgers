@@ -1,0 +1,31 @@
+.modal-container{
+    display: inline-block;
+    position: relative;
+}
+
+.modal-container.active {
+    position: fixed;
+    width: 100vw;
+    height: 55vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    overflow: scroll;
+}
+
+.modal-container img {
+    z-index: 1;
+}
+
+.modal-container.active::after {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.77);
+    z-index: 0;
+}

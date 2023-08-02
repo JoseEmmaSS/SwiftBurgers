@@ -31,8 +31,8 @@ const mostarData = (data) => {
           <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].nombre}</td>
           <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">$ ${data[i].precio}</td>
           <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].descripcion}</td>
-          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">
-            <div class="flex justify-center items-center">
+          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-2">
+            <div>
               <img id="imagenPlatillo${data[i].idPlatillo}" class="h-20 w-auto rounded-xl" src="" alt="Imagen del platillo">
             </div>
           </td>
