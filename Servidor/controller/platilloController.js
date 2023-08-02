@@ -91,7 +91,7 @@ const agregarPlatillo = async (req, res) => {
 
         // Utiliza sharp para redimensionar la imagen antes de guardarla
         sharp(EDFile.data)
-            .resize(800, 600) // Cambia los valores 800 y 600 por el tamaño deseado
+            .resize(800, 600)
             .toFile(`./src/img/${newFileName}`, (error, info) => {
                 if (error) return res.status(500).send({ msg: error });
 
