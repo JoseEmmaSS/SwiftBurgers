@@ -5,6 +5,9 @@ const chefController = require('../controller/chefController')
 const mesaController = require('../controller/mesaController')
 const clienteController = require('../controller/clienteController')
 const platilloController = require('../controller/platilloController')
+
+// Verificación de cuenta
+const auth = require('../middleware/auth')
 const router = express.Router()
 
 router.get('/inicio', propietarioController.inicio);
@@ -13,6 +16,11 @@ router.get('/inicio', propietarioController.inicio);
 router.get('/propietario', propietarioController.getPropietario);
 router.get('/propietario/:idPropietario', platilloController.getPlatilloById)
 router.post('/nuevoPropietario', propietarioController.nuevoPropietario);
+router.post('/login', propietarioController.loginPropietario);
+
+router.post('/inicio', auth, (req, res) => {
+    res.status(200).send('Bienvenido')
+})
 
 //Ruta Chef
 router.post('/nuevoChef', chefController.nuevoChef);

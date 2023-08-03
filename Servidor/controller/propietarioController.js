@@ -1,9 +1,53 @@
 //Importar modelo
 const Propietario = require('../models/Propietario')
+// Importar libreria 'BYCRYPT'
+const bcryp = require('bcrypt')
+// Importar libreria 'jsonwebtoken'
+const jwt = require('jsonwebtoken')
+
+const dotenv = require('dotenv')
+
+dotenv.config({path: '.env'})
 
 const inicio = (req, res) => {
     res.send('Rutas funcionando')
 }
+
+// Login
+const loginPropietario = async (req, res) => {
+    try {
+        const { correo, password } = req.body
+        // Validar campos completos
+        if (!(correo && password)) {
+            return res.status(400).send('Complete todos los campos');
+        }
+        // Validar si el usuario existe
+        const propietario = await Propietario.findOne({ correo })
+
+        if (propietario && (await bcryp.compare(password, propietario.password))){
+            // Crear token
+            const token = jwt.sign(
+                {idPropietario: propietario.idPropietario, correo},
+                process.env.TOKEN_KEY,
+                {
+                    expiresIn: "2h",
+                }
+            );
+        
+            // Guardar token
+            await propietario.update({ token });
+        
+            // Respuesta
+            return res.status(200).json(propietario);
+        }
+        return res.status(400).send("Credenciales Invalidas");
+        
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 const getPropietario = async (req, res) => {
     const propietario = await Propietario.findAll()
@@ -39,6 +83,7 @@ const nuevoPropietario = async (req, res) => {
 
 module.exports = {
     inicio,
+    loginPropietario,
     getPropietario,
     nuevoPropietario,
 }

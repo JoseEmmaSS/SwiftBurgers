@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize')
 const bcryp = require('bcrypt')
 const db = require('../config/db')
 
+
 const Propietario = db.define('propietario', {
     idPropietario: {
         type: DataTypes.INTEGER,
@@ -44,6 +45,9 @@ const Propietario = db.define('propietario', {
     salario: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: true
+    },
+    token: {
+        type: DataTypes.STRING(250)
     }
 }, {
     //Interceptar password para hash

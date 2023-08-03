@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize')
-const Platillo = require('./Platillo')
 const db = require('../config/db')
+const Platillo = require('./Platillo')
 
 const Venta = db.define('venta', {
     idVenta: {
