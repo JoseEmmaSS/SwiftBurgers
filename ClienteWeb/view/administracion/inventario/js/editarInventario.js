@@ -20,10 +20,16 @@ console.log("ID del inventario:", idInventario);
 
 let urlApi = 'http://localhost:3000/'
 let url = urlApi + 'inventario/' + idInventario
-fetch(url)
+
+fetch(url, {
+  method: 'GET',
+  headers: {
+    'x-access-token': token //Pasar el token por headers --> para ser procesado
+  }
+})
   .then(response => response.json())
   .then(data => mostarInventario(data))
-  .then(error => console.log(error))
+  .catch(error => console.log(error))
 
 //Precargado datos en campos de formulario
 mostarInventario = (data) => {
@@ -79,10 +85,11 @@ editarInventario.addEventListener('click', async (event) => {
       body: inventarioJSON,
       headers: {
         'Content-Type': 'application/json',
+        'x-access-token': token //Pasar el token por headers --> para ser procesado
       }
     });
     if (response.ok) {
-      Swal.fire('Producto actualizado', '', 'success').then(()=>{
+      Swal.fire('Producto actualizado', '', 'success').then(() => {
         window.location.href = './inventario.html'
       });
     } else {

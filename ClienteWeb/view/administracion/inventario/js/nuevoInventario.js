@@ -51,7 +51,8 @@ nuevoInventario.addEventListener('click', async (event) => {
       method: 'POST',
       body: inventarioJSON,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'x-access-token': token //Pasar el token por headers --> para ser procesado
       }
     });
 

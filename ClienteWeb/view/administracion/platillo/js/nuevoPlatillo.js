@@ -34,33 +34,36 @@ nuevoProducto.addEventListener('click', async (event) => {
   let nombre = document.getElementById('nombre').value;
   let precio = document.getElementById('precio').value;
   let descripcion = document.getElementById('descripcion').value;
-  
+
   let nombreImagen = imagen.name;
 
   console.log(nombreImagen)
 
-  if(!nombre || !precio || !descripcion){
+  if (!nombre || !precio || !descripcion) {
     Swal.fire('Llene todos los campos', '', 'warning');
     return
-  } 
-    let formData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('precio', precio);
-    formData.append('descripcion', descripcion);
-    formData.append('imagen' ,nombreImagen);
-    formData.append('file', imagen);
-    
-    try {
-      let response = await fetch('http://localhost:3000/agregarPlatillo', {
-        method: 'POST',
-        body: formData,
-      });
-      if (response.ok) {
-        Swal.fire('Producto agregado', '', 'success');
-      } else {
-        console.log('Error al agregar el producto');
+  }
+  let formData = new FormData();
+  formData.append('nombre', nombre);
+  formData.append('precio', precio);
+  formData.append('descripcion', descripcion);
+  formData.append('imagen', nombreImagen);
+  formData.append('file', imagen);
+
+  try {
+    let response = await fetch('http://localhost:3000/agregarPlatillo', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'x-access-token': token //Pasar el token por headers --> para ser procesado
       }
-    } catch (error) {
-      console.log('Error en la conexión');
+    });
+    if (response.ok) {
+      Swal.fire('Producto agregado', '', 'success');
+    } else {
+      console.log('Error al agregar el producto');
     }
+  } catch (error) {
+    console.log('Error en la conexión');
+  }
 });

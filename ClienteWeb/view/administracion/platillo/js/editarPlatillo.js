@@ -3,9 +3,9 @@ let token = localStorage.getItem('userToken')
 
 //Validar si el usuario inicio sesión, si no redirecciona a la pagina de inicio
 if (token) {
-  console.log(`Token Recuperado: ${token}`)
+    console.log(`Token Recuperado: ${token}`)
 } else {
-  window.location.href = '../../public/user/layout.html'
+    window.location.href = '../../public/user/layout.html'
 }
 
 function obtenerIdPlatilloDeURL() {
@@ -17,17 +17,21 @@ function obtenerIdPlatilloDeURL() {
 // Obtener el ID del inventario desde la URL
 const idPlatillo = obtenerIdPlatilloDeURL();
 
-console.log(idPlatillo);
-
 //URL de servidor
 let urlApi = 'http://localhost:3000/'
 // Mostar Inventario
 let url = urlApi + 'platillo/' + idPlatillo
-console.log(url)
-fetch(url)
+
+fetch(url, {
+    method: 'GET',
+    headers: {
+      'x-access-token': token //Pasar el token por headers --> para ser procesado
+    }
+  })
     .then(response => response.json())
     .then(data => mostarData(data))
     .catch(error => console.log(error))
+  
 
 //Precargado datos en campos de formulario
 mostarData = (data) => {
@@ -37,7 +41,6 @@ mostarData = (data) => {
     document.getAnimations('file').value = data.imagen
 
 };
-
 
 
 let fileInput = document.getElementById('file');
@@ -75,22 +78,25 @@ editarPlatillo.addEventListener('click', async (event) => {
         Swal.fire('Llene todos los campos', '', 'warning');
         return;
     }
-    
+
     let formData = new FormData();
     formData.append('nombre', nombre);
     formData.append('precio', precio);
     formData.append('descripcion', descripcion);
-    formData.append('imagen' ,nombreImagen);
+    formData.append('imagen', nombreImagen);
     formData.append('file', imagen);
 
     console.log(formData);
-    
+
     try {
         let response = await fetch(url, {
             method: 'PUT',
             body: formData,
+            headers: {
+                'x-access-token': token //Pasar el token por headers --> para ser procesado
+            }
         });
-        
+
         if (response.ok) {
             Swal.fire('Platillo actualizado', '', 'success');
         } else {
