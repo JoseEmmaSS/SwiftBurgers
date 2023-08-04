@@ -1,12 +1,12 @@
-// Obtener el token de inicio de seción
-let token = localStorage.getItem('userToken')
+// // Obtener el token de inicio de seción
+// let token = localStorage.getItem('userToken')
 
-//Validar si el usuario inicio sesión, si no redirecciona a la pagina de inicio
-if (token) {
-  console.log(`Token Recuperado: ${token}`)
-} else {
-  window.location.href = '../../public/user/layout.html'
-}
+// //Validar si el usuario inicio sesión, si no redirecciona a la pagina de inicio
+// if (token) {
+//   console.log(`Token Recuperado: ${token}`)
+// } else {
+//   window.location.href = '../../public/user/layout.html'
+// }
 
 // Agregar Propietario
 const nuevoPropietario = document.getElementById('agregarPropietario')

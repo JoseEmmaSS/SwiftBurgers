@@ -64,6 +64,5 @@ btnLogin.addEventListener('click', async (event) => {
     } catch (error) {
         console.log('Error de conexión')
     }
-
 })
 
