@@ -1,4 +1,6 @@
 const Inventario = require('../models/Inventario')
+// Verificación de cuenta
+const auth = require('../middleware/auth')
 
 //MOSTRAR INVENTARIO
 const getInventario = async (req, res) => {

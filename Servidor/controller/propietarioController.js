@@ -37,11 +37,11 @@ const loginPropietario = async (req, res) => {
             // Guardar token
             await propietario.update({ token });
         
-            // Respuesta
+            // Respuesta correcta
             return res.status(200).json(propietario);
         }
-        return res.status(400).send("Credenciales Invalidas");
-        
+        // Respuesta
+        return res.status(400).send("Credenciales Invalidas");        
 
     } catch (error) {
         console.log(error)

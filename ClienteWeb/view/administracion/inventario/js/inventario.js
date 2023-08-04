@@ -1,11 +1,23 @@
+// Obtener el token del inicio de sesión
+let token = localStorage.getItem('userToken')
+
+console.log(`Token Recuperado: ${token}`)
+
 //URL de servidor
 let urlApi = 'http://localhost:3000/'
 // Mostar Inventario
 let url = urlApi + 'inventario'
-fetch(url)
+
+//Petición GET para dar haceso a la pagina con el token
+fetch(url, {
+  method: 'GET',
+  headers: {
+    'x-access-token': token //Pasar el token por headers --> para ser procesado
+  }
+})
   .then(response => response.json())
   .then(data => mostarData(data))
-  .catch(error => console.log(error))
+  .catch(error => console.log(error));
 
 const mostarData = (data) => {
   let bodyInventario = '';
@@ -36,7 +48,7 @@ const mostarData = (data) => {
   }
 
   document.getElementById('datosInventario').innerHTML = bodyInventario;
-  
+
   eliminarInventarioFisico = (idInventario) => {
     Swal.fire({
       title: '¿Estás seguro de eliminar el registro?',
@@ -71,21 +83,21 @@ const mostarData = (data) => {
       }
     });
   }
-  
+
 }
 
 //Filtar Inventario
 document.addEventListener('keyup', e => {
 
   //Limpiar input cuando precione tecla esc
-  if(e.key == 'Escape')e.target.value = ''
-  
+  if (e.key == 'Escape') e.target.value = ''
+
   //Filtar contenido de la tabla
-  if(e.target.matches('#buscador')){
+  if (e.target.matches('#buscador')) {
     document.querySelectorAll('.listaInventario').forEach(listaInventario => {
       listaInventario.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-        ?listaInventario.classList.remove('hidden')
-        :listaInventario.classList.add('hidden')
+        ? listaInventario.classList.remove('hidden')
+        : listaInventario.classList.add('hidden')
     })
   }
 })

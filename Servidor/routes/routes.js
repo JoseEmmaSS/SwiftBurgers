@@ -27,7 +27,7 @@ router.post('/nuevoChef', chefController.nuevoChef);
 router.get('/chef/:idChef', chefController.getChefById);
 
 //Ruta Inventario
-router.get('/inventario', inventarioController.getInventario);
+router.get('/inventario', auth, inventarioController.getInventario);
 router.get('/inventario/:idInventario', inventarioController.getInventarioById);
 router.post('/agregarInventario', inventarioController.agregarInventario);
 router.put('/inventario/:idInventario', inventarioController.actualizarInventario );
