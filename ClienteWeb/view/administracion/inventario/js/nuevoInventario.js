@@ -1,3 +1,14 @@
+// Obtener el token de inicio de sesión
+let token = localStorage.getItem('userToken')
+
+//Verificar que exixte el token
+if (token) {
+  console.log(`Token Recuperado: ${token}`)
+} else {
+  window.location.href = '../../public/user/layout.html'
+}
+
+
 // Agregar Inventario
 const nuevoInventario = document.getElementById('agregarInventario')
 const inputs = document.querySelectorAll('#formulario input')

@@ -1,3 +1,12 @@
+// Obtener el token de inicio de sesión
+let token = localStorage.getItem('userToken')
+
+if (token) {
+  console.log(`Token Recuperado: ${token}`)
+} else {
+  window.location.href = '../../public/user/layout.html'
+}
+
 function obtenerIdInventarioDeURL() {
   const urlParams = new URLSearchParams(window.location.search);
   const idInventario = urlParams.get('idInventario');

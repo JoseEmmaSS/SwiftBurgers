@@ -1,3 +1,13 @@
+// Obtener el token de inicio de seción
+let token = localStorage.getItem('userToken')
+
+//Validar si el usuario inicio sesión, si no redirecciona a la pagina de inicio
+if (token) {
+  console.log(`Token Recuperado: ${token}`)
+} else {
+  window.location.href = '../../public/user/layout.html'
+}
+
 //URL de servidor
 let urlApi = 'http://localhost:3000/'
 
@@ -15,7 +25,15 @@ const image = (id) => {
 
 // Mostar Inventario
 let url = urlApi + 'platillo'
-fetch(url)
+
+// Pertición GET para dar acceso a la pagina con el token
+
+fetch(url, {
+  method: 'GET',
+  headers: {
+    'x-access-token': token //Pasar el token por headers --> para ser procesado
+  }
+})
   .then(response => response.json())
   .then(data => mostarData(data))
   .catch(error => console.log(error))
@@ -48,9 +66,9 @@ const mostarData = (data) => {
           </td>
         </tr>
       `;
-      image(data[i].idPlatillo); 
+    image(data[i].idPlatillo);
 
-      console.log(data[i].idPlatillo)
+    console.log(data[i].idPlatillo)
   }
 
   document.getElementById('datosInventario').innerHTML = bodyInventario;

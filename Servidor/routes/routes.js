@@ -28,9 +28,9 @@ router.get('/chef/:idChef', chefController.getChefById);
 
 //Ruta Inventario
 router.get('/inventario', auth, inventarioController.getInventario);
-router.get('/inventario/:idInventario', inventarioController.getInventarioById);
-router.post('/agregarInventario', inventarioController.agregarInventario);
-router.put('/inventario/:idInventario', inventarioController.actualizarInventario );
+router.get('/inventario/:idInventario', auth, inventarioController.getInventarioById);
+router.post('/agregarInventario', auth, inventarioController.agregarInventario);
+router.put('/inventario/:idInventario', auth, inventarioController.actualizarInventario);
 router.put('/eliminarInventarioLogico/:idInventario', inventarioController.eliminarInventarioLogico);
 router.delete('/Inventario/:idInventario', inventarioController.eliminarInventarioFisico);
 
@@ -43,12 +43,12 @@ router.post('/agregarMesa', mesaController.agregarMesa);
 router.put('disponibleMesa/:idMesa', mesaController.disponibleMesa)
 
 //Ruta Platillo
-router.get('/platillo', platilloController.getPlatillos)
+router.get('/platillo', auth, platilloController.getPlatillos)
 router.get('/getImagenes', platilloController.getImagenes)
-router.get('/platillo/:idPlatillo', platilloController.getPlatilloById)
+router.get('/platillo/:idPlatillo', auth, platilloController.getPlatilloById)
 router.get('/platilloImg/:idPlatillo', platilloController.getImagen)
-router.post('/agregarPlatillo', platilloController.agregarPlatillo)
-router.put('/platillo/:idPlatillo', platilloController.actualizarPlatillo)
+router.post('/agregarPlatillo', auth, platilloController.agregarPlatillo)
+router.put('/platillo/:idPlatillo', auth, platilloController.actualizarPlatillo)
 router.delete('/platillo/:idPlatillo', platilloController.eliminarPLatillo)
 
 

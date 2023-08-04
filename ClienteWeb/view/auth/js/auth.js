@@ -8,7 +8,14 @@ btnLogin.addEventListener('click', async (event) => {
     let password = document.getElementById('password').value;
 
     if (!correo || !password) {
-        Swal.fire('Complete todos los campos', '', 'warning');
+        Swal.fire({
+            title: 'Complete los campos',
+            icon: 'success',
+            timer: 1000,
+            timerProgressBar: true,
+            confirmButtonColor: '#facc15'
+            
+        })
         return;
     }
 
@@ -34,10 +41,25 @@ btnLogin.addEventListener('click', async (event) => {
             console.log(token)
             //Almacenar el token el el navegador usando localStorage
             localStorage.setItem('userToken', token)
-            Swal.fire('Bienvenido', '', 'success')
+            //Mensaje de acceso correcto
+            Swal.fire({
+                title: 'Bienvenido',
+                icon: 'success',
+                timer: 1000,
+                timerProgressBar: true,
+                confirmButtonColor: '#facc15'
+                
+            })
             
         }else{
-            Swal.fire('Datos icorrectos', 'Revisa tu correo o contraseña', 'error');
+            Swal.fire({
+                title: 'Datos Incorrectos',
+                text: 'Verifique su correo y contraseña',
+                icon: 'error',
+                timer: 2000,
+                timerProgressBar: true,
+                confirmButtonColor: '#FF0000'
+            });
         }
     } catch (error) {
         console.log('Error de conexión')

@@ -1,14 +1,18 @@
-// Obtener el token del inicio de sesión
+// Obtener el token de inicio de sesión
 let token = localStorage.getItem('userToken')
 
-console.log(`Token Recuperado: ${token}`)
+if (token) {
+  console.log(`Token Recuperado: ${token}`)
+} else {
+  window.location.href = '../../public/user/layout.html'
+}
 
 //URL de servidor
 let urlApi = 'http://localhost:3000/'
 // Mostar Inventario
 let url = urlApi + 'inventario'
 
-//Petición GET para dar haceso a la pagina con el token
+//Petición GET para dar acceso a la pagina con el token
 fetch(url, {
   method: 'GET',
   headers: {
