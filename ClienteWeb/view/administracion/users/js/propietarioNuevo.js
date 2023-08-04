@@ -1,6 +1,8 @@
 // // Obtener el token de inicio de seción
 // let token = localStorage.getItem('userToken')
 
+const { default: Swal } = require("sweetalert2");
+
 // //Validar si el usuario inicio sesión, si no redirecciona a la pagina de inicio
 // if (token) {
 //   console.log(`Token Recuperado: ${token}`)
@@ -54,6 +56,7 @@ nuevoPropietario.addEventListener('click', async (event) => {
     });
 
     if (response.ok) {
+      Swal.fire("Propietario agregado exitosamente")
       console.log('Propietario agregado exitosamente');
   } else {
       const responseData = await response.json();
