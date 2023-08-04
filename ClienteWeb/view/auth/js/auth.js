@@ -14,7 +14,7 @@ btnLogin.addEventListener('click', async (event) => {
             timer: 1000,
             timerProgressBar: true,
             confirmButtonColor: '#facc15'
-            
+
         })
         return;
     }
@@ -48,10 +48,10 @@ btnLogin.addEventListener('click', async (event) => {
                 timer: 1000,
                 timerProgressBar: true,
                 confirmButtonColor: '#facc15'
-                
             })
-            
-        }else{
+            window.location.href = '../administracion/index.html'
+
+        } else {
             Swal.fire({
                 title: 'Datos Incorrectos',
                 text: 'Verifique su correo y contraseña',
@@ -63,7 +63,7 @@ btnLogin.addEventListener('click', async (event) => {
         }
     } catch (error) {
         console.log('Error de conexión')
-    }   
-    
+    }
+
 })
 
