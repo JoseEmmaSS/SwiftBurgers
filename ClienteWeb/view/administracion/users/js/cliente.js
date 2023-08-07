@@ -24,7 +24,7 @@ let urlApi = 'http://localhost:3000/'
 
 
 // Mostar Inventario
-let url = urlApi + 'propietario'
+let url = urlApi + 'cliente'
 fetch(url)
   .then(response => response.json())
   .then(data => mostarData(data))
@@ -37,21 +37,15 @@ const mostarData = (data) => {
   for (let i = 0; i < data.length; i++) {
     bodyInventario += `
         <tr class="listaInventario border-b border-black duration-300 ease-in-out hover:bg-yellow-50 dark:border-neutral-500 dark:hover:bg-neutral-600">
-          <td class="whitespace-nowrap dark:text-white text-lg font-semibold px-6 py-4">${data[i].idPropietario}</td>
+          <td class="whitespace-nowrap dark:text-white text-lg font-semibold px-6 py-4">${data[i].idCliente}</td>
           <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].nombre}</td>
-          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].apellidoPaterno}</td>
-          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].apellidoMaterno}</td>
-          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].direccion}</td>
-          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].numeroTelefono}</td>
-          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].correo}</td>
-          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].nombreUsuario}</td>
-          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">$ ${data[i].salario}</td>
+          <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">${data[i].mesa_idMesa}</td>
           <td class="whitespace-nowrap dark:text-white text-lg px-6 py-4">
             <div class="flex space-x-4">
-              <a class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" id="editarInventario" onclick="editarInventario(${data[i].idPropietario})">
+              <a class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" id="editarInventario" onclick="editarInventario(${data[i].idCliente})">
                 <img class="h-4" src="../../../src/svg/editar.svg" alt="Editar">
               </a>
-              <button onclick="eliminarPropietario(${data[i].idPropietario})" id="eliminarPropietario" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              <button onclick="eliminarCliente(${data[i].idCliente})" id="eliminarCliente" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                 <img class="h-4" src="../../../src/svg/borrar.svg" alt="Eliminar">
               </button>
 
@@ -61,12 +55,12 @@ const mostarData = (data) => {
       `;
     //   image(data[i].idPropietario); 
 
-      console.log(data[i].idPropietario)
+      console.log(data[i].idCliente)
   }
 
   document.getElementById('datosInventario').innerHTML = bodyInventario;
 
-  eliminarPropietario = (idPropietario) => {
+  eliminarCliente = (idCliente) => {
     Swal.fire({
       title: '¿Estás seguro de eliminar el registro?',
       showCancelButton: true,
@@ -77,7 +71,7 @@ const mostarData = (data) => {
       cancelButtonColor: '#3085d6',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(url + '/' + idPropietario, {
+        fetch(url + '/' + idCliente, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -85,12 +79,12 @@ const mostarData = (data) => {
         })
           .then(response => {
             if (response.ok) {
-              Swal.fire('Eliminado', 'Propietario eliminado.', 'success').then(() => {
+              Swal.fire('Eliminado', 'Cliente eliminado.', 'success').then(() => {
                 location.reload();
               });
             } else {
               console.error('Error al eliminar el platillo');
-              Swal.fire('Error', 'Ha ocurrido un error al eliminar el propietario.', 'error');
+              Swal.fire('Error', 'Ha ocurrido un error al eliminar al cliente.', 'error');
             }
           })
           .catch(error => {
@@ -121,7 +115,7 @@ document.addEventListener('keyup', e => {
 
 
 
-editarInventario = (idPropietario) => {
-  window.location.href = `editarPropietario.html?idPropietario=${idPropietario}`;
+editarInventario = (idCliente) => {
+  window.location.href = `editarCliente.html?idCliente=${idCliente}`;
 }
 

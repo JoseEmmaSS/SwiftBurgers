@@ -14,17 +14,23 @@ router.get('/inicio', propietarioController.inicio);
 
 //Ruta Propietario
 router.get('/propietario', propietarioController.getPropietario);
-router.get('/propietario/:idPropietario', platilloController.getPlatilloById)
+router.get('/propietario/:idPropietario', propietarioController.getPropietarioById)
 router.post('/nuevoPropietario', propietarioController.nuevoPropietario);
 router.post('/login', propietarioController.loginPropietario);
+router.put('/propietario/:idPropietario', auth, propietarioController.actualizarPropietario);
+router.delete('/propietario/:idPropietario', propietarioController.eliminarPropietarioFisico);
 
 router.post('/inicio', auth, (req, res) => {
     res.status(200).send('Bienvenido')
 })
 
 //Ruta Chef
+
+router.get('/chef', chefController.getChef);
 router.post('/nuevoChef', chefController.nuevoChef);
 router.get('/chef/:idChef', chefController.getChefById);
+router.put('/chef/:idChef', auth, chefController.actualizarChef);
+router.delete('/chef/:idChef', chefController.eliminarChefFisico);
 
 //Ruta Inventario
 router.get('/inventario', auth, inventarioController.getInventario);
@@ -36,8 +42,11 @@ router.delete('/Inventario/:idInventario', inventarioController.eliminarInventar
 
 
 //Ruta Cliente
-router.post('/agregarCliente', clienteController.agregarCliente)
-
+router.get('/cliente', clienteController.getCliente);
+router.get('/cliente/:idCliente', clienteController.getClienteById);
+router.post('/agregarCliente', clienteController.agregarCliente);
+router.put('/cliente/:idCliente', auth, clienteController.actualizarCliente);
+router.delete('/cliente/:idCliente', clienteController.eliminarClienteFisico);
 //Ruta Mesa
 router.post('/agregarMesa', mesaController.agregarMesa);
 router.put('disponibleMesa/:idMesa', mesaController.disponibleMesa)

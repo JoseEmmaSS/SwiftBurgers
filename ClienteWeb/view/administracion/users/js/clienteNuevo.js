@@ -40,7 +40,8 @@ nuevoPropietario.addEventListener('click', async (event) => {
     });
 
     if (response.ok) {
-      console.log('Inventario agregado exitosamente');
+      Swal.fire('Cliente agregado exitosamente');
+      console.log('Cliente agregado exitosamente');
     } else {
       console.log('Error al agregar el inventario');
     }

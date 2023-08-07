@@ -1,7 +1,7 @@
 // // Obtener el token de inicio de seción
 // let token = localStorage.getItem('userToken')
 
-const { default: Swal } = require("sweetalert2");
+//const { default: Swal } = require("sweetalert2");
 
 // //Validar si el usuario inicio sesión, si no redirecciona a la pagina de inicio
 // if (token) {

@@ -4,20 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../../../dist/output.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <title>Propietario nuevo</title>
+  <link rel="stylesheet" href="../../../dist/output.css">
+  <title>Editar Inventario</title>
 </head>
 
-<body>
+<body class="dark:bg-gray-600">
   <header class="mb-4">
     <nav class=" border-gray-200 dark:bg-gray-700 px-4 lg:px-6 py-5 shadow-md bg-amber-400">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <a href="#" class="flex items-center">
           <img src="../../../src/svg/icono_restaurante.svg" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
           <span
-            class="self-center text-4xl font-bold whitespace-nowrap dark:text-base text-white dark:text-white">Propietarios</span>
+            class="self-center text-4xl font-bold whitespace-nowrap dark:text-base text-white dark:text-white">Administración
+            Propietario</span>
         </a>
 
         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
@@ -64,10 +63,10 @@
   </header>
 
   <div class="m-10">
-    <div class=" border-gray-200 dark:bg-gray-700 px-4 lg:px-6 py-5 shadow-md">
+    <div class="border-gray-200 dark:bg-gray-700 px-4 lg:px-6 py-5 shadow-md">
       <a href="../users/propietario.html"
         class="inline-flex items-center bg-yellow-700 hover:bg-yellow-800 text-white font-bold py-3 px-8 rounded mr-2 h-10">
-        <img class="h-4 pr-2" src="../../../../src/svg/regresar.svg" alt="Nuevo"><samp>Regresar</samp>
+        <img class="h-4 pr-2" src="../../../src/svg/regresar.svg" alt="Nuevo"><samp>Regresar</samp>
       </a>
     </div>
     <form >
@@ -132,41 +131,40 @@
 
       <button type="submit"
         class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 flex items-center justify-center"
-        id="agregarPropietario">Agregar<img class="h-4 ml-2" src="../../../../src/svg/nuevo.svg" alt="Agregar">
+        id="editarPropietario">Guardar<img class="h-4 ml-2" src="../../../src/svg/guardar.svg" alt="Agregar">
       </button>
 
     </form>
   </div>
-  <script src="js/propietarioNuevo.js"></script>
+  <script src="../users/js/editarPropietario.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     function redirigir() {
     var select = document.getElementById("opciones");
     var opcionSeleccionada = select.value;
-
+  
     if (opcionSeleccionada !== "") {
       window.location.href = opcionSeleccionada;
   }
-}
-
-  function redirigirUsuario() {
-  var select = document.getElementById("opcionesProducto");
-  var opcionSeleccionada = select.value;
-
-  if (opcionSeleccionada !== "") {
-    window.location.href = opcionSeleccionada;
-}
-}
-</script>
-
-<script>
-  const menuButton = document.getElementById('menuButton');
-  const menuDropdown = document.getElementById('menuDropdown');
-
-  menuButton.addEventListener('click', function() {
-    menuDropdown.classList.toggle('hidden');
-  });
-</script>
+  }
+  
+    function redirigirUsuario() {
+    var select = document.getElementById("opcionesProducto");
+    var opcionSeleccionada = select.value;
+  
+    if (opcionSeleccionada !== "") {
+      window.location.href = opcionSeleccionada;
+  }
+  }
+  </script>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const menuDropdown = document.getElementById('menuDropdown');
+  
+    menuButton.addEventListener('click', function() {
+      menuDropdown.classList.toggle('hidden');
+    });
+  </script>
 </body>
 
 </html>

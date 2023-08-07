@@ -1,6 +1,11 @@
 const Chef = require('../models/Chef')
 
 //GET
+const getChef = async (req, res) => {
+    const chef = await Chef.findAll()
+    res.json(chef)
+}
+
 const getChefById = async (req, res) => {
     const { idChef } = req.params;
     const chef = await Chef.findByPk(idChef)
@@ -46,7 +51,51 @@ const nuevoChef = async (req, res) => {
     }
 }
 
+
+const actualizarChef = async (req, res) => {
+    const { idChef } = req.params;
+    const { body } = req;
+
+    try {
+        const chef = await Chef.findByPk(idChef);
+
+        if (!chef) {
+            return res.status(400).json({
+                msg: 'No existe el propietario con el id: ' + idChef
+            });
+        }
+
+        await chef.update(body);
+        res.json(chef);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: 'Error al actualizar el propietario' });
+    }
+};
+
+const eliminarChefFisico = async (req, res) => {
+
+    //Verificar si existe
+    const { idChef } = req.params;
+
+    const chef = await Chef.findByPk(idChef);
+
+    if (!chef) {
+        return res.status(500).json({
+            msg: `No existe el producto en el propietario con id: ${idChef}`
+        })
+    }
+
+    await chef.destroy();
+
+    res.json(chef);
+
+}
+
 module.exports = {
+    getChef,
     nuevoChef,
-    getChefById
+    getChefById,
+    actualizarChef,
+    eliminarChefFisico,
 }
