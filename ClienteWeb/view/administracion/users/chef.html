@@ -4,18 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../../../dist/output.css">
-  <title>Chef nuevo</title>
+  <link rel="stylesheet" href="../../../dist/output.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <title>Chef</title>
 </head>
 
-<body>
+<body class="bg-yellow-50 dark:bg-gray-600">
+
   <header class="mb-4">
     <nav class=" border-gray-200 dark:bg-gray-700 px-4 lg:px-6 py-5 shadow-md bg-amber-400">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <a href="#" class="flex items-center">
           <img src="../../../src/svg/icono_restaurante.svg" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
           <span
-            class="self-center text-4xl font-bold whitespace-nowrap dark:text-base text-white dark:text-white">Chefs</span>
+            class="self-center text-4xl font-bold whitespace-nowrap dark:text-base text-white dark:text-white">Administración
+            chef</span>
         </a>
 
         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
@@ -28,7 +32,7 @@
               <select class="block text-lg font-bold mb-1 bg-amber-400 dark:bg-gray-700 text-white"
                 id="opcionesProducto" onchange="redirigirUsuario()">
                 <option class="font-bold" value="#">Gestionar administracion</option>
-                <option class="bg-yellow-100 text-black " value="../inventario/inventario.html">inventario</option>
+                <option class="bg-yellow-100 text-black " value="../inventario/inventario.html">Inventario</option>
                 <option class="bg-yellow-100 text-black " value="../platillo/platillos.html">Platillos</option>
                 <!-- <option value="cliente.html">Cliente</option>  -->
               </select>
@@ -36,7 +40,7 @@
             <li>
               <select class="block text-lg font-bold mb-1 bg-amber-400 dark:bg-gray-700 text-white" id="opciones"
                 onchange="redirigir()">
-                <option class="font-bold"  value="#">Altas de usuario</option>
+                <option class="font-bold" value="#">Altas de usuario</option>
                 <option class="bg-yellow-100 text-black " value="../users/propietario.html">Propietario</option>
                 <option class="bg-yellow-100 text-black " value="../users/chef.html">Chef</option>
                 <option class="bg-yellow-100 text-black " value="../users/cliente.html">Cliente</option>
@@ -49,7 +53,7 @@
                 </button>
                 <div id="menuDropdown"
                   class="absolute right-0 mt-2 py-2 w-48 bg-yellow-400 border border-yellow-400 rounded-lg shadow-lg hidden">
-                  <a href="../../public/login.html" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar
+                  <a href="../../auth/login.html" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar
                     sesión</a>
                 </div>
               </div>
@@ -61,110 +65,89 @@
     </nav>
   </header>
 
-  <div class="m-10">
-    <div class=" border-gray-200 dark:bg-gray-700 px-4 lg:px-6 py-5 shadow-md">
-      <a href="../index.html"
-        class="inline-flex items-center bg-yellow-700 hover:bg-yellow-800 text-white font-bold py-3 px-8 rounded mr-2 h-10">
-        <img class="h-4 pr-2" src="../../../../src/svg/regresar.svg" alt="Nuevo"><samp>Regresar</samp>
-      </a>
+  <main class="">
+    <!-- Barra de Busqueda -->
+    <div class="p-3">
+      <form class="border-gray-200 dark:bg-gray-700 shadow-md">
+        <label for="search" class="mb-2 text-sm font-medium text-black sr-only dark:text-white">Buscar</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg class="w-4 h-4 text-black dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            </svg>
+          </div>
+          <input type="text" id="buscador"
+            class="block w-full p-4 pl-10 text-xl text-black border border-gray-300 rounded-lg bg-transparent focus:ring-yellow-500 focus:border-yellow-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+            placeholder="Buscar en inventario" required>
+        </div>
+      </form>
     </div>
-    <form class=" border-gray-200 dark:bg-gray-700 px-4 lg:px-6 py-5 shadow-md">
-      <div class="grid gap-6 mb-6 md:grid-cols-2 mt-5">
-        <div>
-          <label for="nombre" class="block mb-2 text-xl text-black dark:text-white font-bold">Nombre</label>
-          <input type="text" id="nombre"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Tu nombre" required>
-        </div>
-        <div>
-            <label for="nombre" class="block mb-2 text-xl text-black dark:text-white font-bold">Apellido Paterno</label>
-            <input type="text" id="apellidoP"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Tu apellido paterno" required>
+    
+    <!-- Tabla -->
+    <div class="flex flex-col p-3">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+          <div class="w-full flex ml-10">
+            <a href="../users/nuevoChef.html"
+              class="inline-flex items-center bg-yellow-700 hover:bg-yellow-800 text-white font-bold py-4 px-8 rounded mr-2 h-10">Agregar
+              <img class="ml-3 h-4" src="../../../src/svg/nuevo.svg" alt="Agregar">
+            </a>
           </div>
-          <div>
-            <label for="nombre" class="block mb-2 text-xl text-black dark:text-white font-bold">Apellido Materno</label>
-            <input type="text" id="apellidoM"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Tu apellido materno" required>
+          <div class="w-full flex justify-center">
+            <table class="w-fit text-left text-sm font-light ">
+              <thead class="border-b border-black font-medium dark:border-neutral-500">
+                <tr class="uppercase">
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">id  </th>
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">Nombre  </th>
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">Apellido paterno  </th>
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">Apellido materno  </th>
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">Direccion  </th>
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">Telefono  </th>
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">Correo  </th>
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">Usuario  </th>
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">Salario  </th>
+                  <th scope="col" class="px-auto py-4 text-lg dark:text-white">Opciones  </th>
+                </tr>
+              </thead>
+              <tbody id="datosInventario">
+              </tbody>
+            </table>
           </div>
-        <div>
-          <label for="direccion" class="block mb-2 text-xl text-black dark:text-white font-bold">Direccion</label>
-          <input type="text" id="direccion"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Direccion" required>
-        </div>
-        <div>
-          <label for="telefono" class="block mb-2 text-xl text-black dark:text-white font-bold">Numero telefonico</label>
-          <input type="number" id="numeroTelefono"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="telefono" required>
-        </div>
-        <div>
-          <label for="correo" class="block mb-2 text-xl text-black dark:text-white font-bold">Email</label>
-          <input type="email" id="correo"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Email" required>
-        </div>
-        <div>
-          <label class="block mb-2 text-xl text-black dark:text-white font-bold" for="password">
-              Contraseña
-          </label>
-          <input
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              id="password" type="password" placeholder="******************">
-      </div>
-        <div>
-            <label for="nombre" class="block mb-2 text-xl text-black dark:text-white font-bold">Nombre de Usuario</label>
-            <input type="text" id="nombreUsuario"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Usuario" required>
-        </div>
-        <div>
-          <label for="salario" class="block mb-2 text-xl text-black dark:text-white font-bold">Salario</label>
-          <input type="number" id="salario"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Salario" required>
         </div>
       </div>
-
-      <button type="submit"
-        class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 flex items-center justify-center"
-        id="agregarChef">Agregar<img class="h-4 ml-2" src="../../../../src/svg/nuevo.svg" alt="Agregar">
-      </button>
-
-    </form>
-  </div>
-  <script src="js/chefNuevo.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    function redirigir() {
+    </div>
+  </main>
+</body>
+<script src="../users/js/chef.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function redirigir() {
     var select = document.getElementById("opciones");
     var opcionSeleccionada = select.value;
 
     if (opcionSeleccionada !== "") {
       window.location.href = opcionSeleccionada;
+    }
   }
-}
 
-    function redirigirUsuario() {
+  function redirigirUsuario() {
     var select = document.getElementById("opcionesProducto");
     var opcionSeleccionada = select.value;
 
     if (opcionSeleccionada !== "") {
       window.location.href = opcionSeleccionada;
+    }
   }
-  }
-  </script>
-
+</script>
 <script>
   const menuButton = document.getElementById('menuButton');
   const menuDropdown = document.getElementById('menuDropdown');
 
-  menuButton.addEventListener('click', function() {
+  menuButton.addEventListener('click', function () {
     menuDropdown.classList.toggle('hidden');
   });
 </script>
-</body>
 
 </html>

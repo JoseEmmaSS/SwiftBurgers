@@ -6,6 +6,7 @@ const bcryp = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const dotenv = require('dotenv')
+const { propfind } = require('../routes/routes')
 
 dotenv.config({ path: '.env' })
 
@@ -60,6 +61,19 @@ const getPropietario = async (req, res) => {
     res.json(propietario)
 }
 
+const getPropietarioById = async (req, res) => {
+    const { idPropietario } = req.params;
+    const propietario = await Propietario.findByPk(idPropietario)
+
+    if (propietario) {
+        res.json(propietario)
+    } else {
+        res.status(404).json({
+            msg: `Inventario no encontrado con id: ${idPropietario}`
+        })
+    }
+}
+
 //FUNCIONES PARA CREAR REGISTRO
 const nuevoPropietario = async (req, res) => {
     const { body } = req;
@@ -87,10 +101,53 @@ const nuevoPropietario = async (req, res) => {
     }
 }
 
+const actualizarPropietario = async (req, res) => {
+    const { idPropietario } = req.params;
+    const { body } = req;
+
+    try {
+        const propietario = await Propietario.findByPk(idPropietario);
+
+        if (!propietario) {
+            return res.status(400).json({
+                msg: 'No existe el propietario con el id: ' + idPropietario
+            });
+        }
+
+        await propietario.update(body);
+        res.json(propietario);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: 'Error al actualizar el propietario' });
+    }
+};
+
+const eliminarPropietarioFisico = async (req, res) => {
+
+    //Verificar si existe
+    const { idPropietario } = req.params;
+
+    const propietario = await Propietario.findByPk(idPropietario);
+
+    if (!propietario) {
+        return res.status(500).json({
+            msg: `No existe el producto en el propietario con id: ${idPropietario}`
+        })
+    }
+
+    await propietario.destroy();
+
+    res.json(propietario);
+
+}
+
 module.exports = {
     inicio,
     cerrarSesion,
     loginPropietario,
     getPropietario,
+    getPropietarioById,
     nuevoPropietario,
+    actualizarPropietario,
+    eliminarPropietarioFisico,
 }

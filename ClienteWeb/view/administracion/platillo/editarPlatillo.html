@@ -50,7 +50,7 @@
                 </button>
                 <div id="menuDropdown"
                   class="absolute right-0 mt-2 py-2 w-48 bg-yellow-400 border border-yellow-400 rounded-lg shadow-lg hidden">
-                  <a href="../../public/login.html" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar
+                  <a href="../../auth/login.html" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar
                     sesión</a>
                 </div>
               </div>
@@ -114,6 +114,33 @@
     </div>
     <script src="../platillo/js/editarPlatillo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      function redirigir() {
+        var select = document.getElementById("opciones");
+        var opcionSeleccionada = select.value;
+  
+        if (opcionSeleccionada !== "") {
+          window.location.href = opcionSeleccionada;
+        }
+      }
+  
+      function redirigirUsuario() {
+        var select = document.getElementById("opcionesProducto");
+        var opcionSeleccionada = select.value;
+  
+        if (opcionSeleccionada !== "") {
+          window.location.href = opcionSeleccionada;
+        }
+      }
+    </script>
+    <script>
+      const menuButton = document.getElementById('menuButton');
+      const menuDropdown = document.getElementById('menuDropdown');
+  
+      menuButton.addEventListener('click', function () {
+        menuDropdown.classList.toggle('hidden');
+      });
+    </script>
 </body>
 
 </html>

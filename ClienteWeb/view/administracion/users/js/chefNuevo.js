@@ -61,6 +61,7 @@ nuevoPropietario.addEventListener('click', async (event) => {
     
 
     if (response.ok) {
+      Swal.fire('Chef agregado exitosamente');
       console.log('Chef agregado exitosamente');
   } else {
       const responseData = await response.json();
