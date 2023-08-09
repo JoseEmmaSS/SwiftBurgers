@@ -51,7 +51,7 @@ btnLogin.addEventListener('click', async (event) => {
             })
             setTimeout(() => {
                 window.location.href = '../administracion/index.html'
-            }, 1700);
+            }, 1500);
 
         } else {
             Swal.fire({
