@@ -12,7 +12,7 @@ const getClienteById = async (req, res) => {
     const cliente = await Cliente.findByPk(idCliente)
 
     if(cliente){
-        res.json(chef)
+        res.json(cliente)
     }else{
         res.status(404).json({
             msg: `Chef no encontrado con id: ${idCliente}`

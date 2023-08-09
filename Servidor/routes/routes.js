@@ -52,7 +52,7 @@ router.post('/agregarMesa', mesaController.agregarMesa);
 router.put('disponibleMesa/:idMesa', mesaController.disponibleMesa)
 
 //Ruta Platillo
-router.get('/platillo', auth, platilloController.getPlatillos)
+router.get('/platillo', platilloController.getPlatillos)
 router.get('/getImagenes', platilloController.getImagenes)
 router.get('/platillo/:idPlatillo', auth, platilloController.getPlatilloById)
 router.get('/platilloImg/:idPlatillo', platilloController.getImagen)

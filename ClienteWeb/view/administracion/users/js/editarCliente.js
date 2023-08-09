@@ -16,7 +16,7 @@ function obtenerIdInventarioDeURL() {
 // Obtener el ID del inventario desde la URL
 const idInventario = obtenerIdInventarioDeURL();
 
-console.log("ID del propietario:", idInventario);
+console.log("ID del cliente:", idInventario);
 
 let urlApi = 'http://localhost:3000/'
 let url = urlApi + 'cliente/' + idInventario

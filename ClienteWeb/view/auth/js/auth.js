@@ -49,7 +49,9 @@ btnLogin.addEventListener('click', async (event) => {
                 timerProgressBar: true,
                 confirmButtonColor: '#facc15'
             })
-            window.location.href = '../administracion/index.html'
+            setTimeout(() => {
+                window.location.href = '../administracion/index.html'
+            }, 1500);
 
         } else {
             Swal.fire({
