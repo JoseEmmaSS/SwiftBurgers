@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 
 const dotenv = require('dotenv')
 
-dotenv.config({path: '.env'})
+dotenv.config({ path: '.env' })
 
 const inicio = (req, res) => {
     res.send('Rutas funcionando')
@@ -24,28 +24,34 @@ const loginPropietario = async (req, res) => {
         // Validar si el usuario existe
         const propietario = await Propietario.findOne({ correo })
 
-        if (propietario && (await bcryp.compare(password, propietario.password))){
+        if (propietario && (await bcryp.compare(password, propietario.password))) {
             // Crear token
             const token = jwt.sign(
-                {idPropietario: propietario.idPropietario, correo},
+                { idPropietario: propietario.idPropietario, correo },
                 process.env.TOKEN_KEY,
                 {
                     expiresIn: "2h",
                 }
             );
-        
+
             // Guardar token
             await propietario.update({ token });
-        
+
             // Respuesta correcta
             return res.status(200).json(propietario);
         }
         // Respuesta
-        return res.status(400).send("Credenciales Invalidas");        
+        return res.status(400).send("Credenciales Invalidas");
 
     } catch (error) {
         console.log(error)
     }
+}
+
+const cerrarSesion = async (req, res) => {
+    const {idPropietario} = req.params;
+
+    
 }
 
 
@@ -83,6 +89,7 @@ const nuevoPropietario = async (req, res) => {
 
 module.exports = {
     inicio,
+    cerrarSesion,
     loginPropietario,
     getPropietario,
     nuevoPropietario,

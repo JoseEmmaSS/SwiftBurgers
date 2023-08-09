@@ -13,10 +13,11 @@ const router = express.Router()
 router.get('/inicio', propietarioController.inicio);
 
 //Ruta Propietario
-router.get('/propietario', propietarioController.getPropietario);
+router.get('/propietario', auth, propietarioController.getPropietario);
 router.get('/propietario/:idPropietario', platilloController.getPlatilloById)
 router.post('/nuevoPropietario', propietarioController.nuevoPropietario);
 router.post('/login', propietarioController.loginPropietario);
+router.post('/cerrarSesion', propietarioController.cerrarSesion);
 
 router.post('/inicio', auth, (req, res) => {
     res.status(200).send('Bienvenido')
@@ -43,7 +44,7 @@ router.post('/agregarMesa', mesaController.agregarMesa);
 router.put('disponibleMesa/:idMesa', mesaController.disponibleMesa)
 
 //Ruta Platillo
-router.get('/platillo', auth, platilloController.getPlatillos)
+router.get('/platillo', platilloController.getPlatillos)
 router.get('/getImagenes', platilloController.getImagenes)
 router.get('/platillo/:idPlatillo', auth, platilloController.getPlatilloById)
 router.get('/platilloImg/:idPlatillo', platilloController.getImagen)

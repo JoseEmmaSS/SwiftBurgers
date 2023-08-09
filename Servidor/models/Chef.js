@@ -55,5 +55,4 @@ const Chef = db.define('chef', {
 }
 )
 
-
 module.exports = Chef

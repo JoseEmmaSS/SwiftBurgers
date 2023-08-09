@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize')
 const db = require('../config/db')
-const Platillo = require('./Platillo')
+const Platillo = require('../models/Platillo')
 
-const Venta = db.define('venta', {
+const Ventas = db.define('ventas', {
     idVenta: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -18,16 +18,15 @@ const Venta = db.define('venta', {
         allowNull: false
     },
     total: {
-        type: DataTypes.DECIMAL(10,2),
+        type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     }
 }, {
-    tableName: 'venta',
-    timestamps: false
-});
+    tableName: 'ventas',
+})
 
-Venta.belongsTo(Platillo, {
+Ventas.belongsTo(Platillo, {
     foreignKey: 'idPlatillo'
 });
 
-module.exports = Venta
+module.exports = Ventas
