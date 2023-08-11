@@ -17,7 +17,7 @@ router.get('/propietario', propietarioController.getPropietario);
 router.get('/propietario/:idPropietario', propietarioController.getPropietarioById)
 router.post('/nuevoPropietario', propietarioController.nuevoPropietario);
 router.post('/login', propietarioController.loginPropietario);
-router.get('/logOut/:idPropietario', propietarioController.logOutPropietario);
+router.post('/logOut', propietarioController.logOutPropietario);
 router.put('/propietario/:idPropietario', auth, propietarioController.actualizarPropietario);
 router.delete('/propietario/:idPropietario', propietarioController.eliminarPropietarioFisico);
 
@@ -27,7 +27,6 @@ router.post('/inicio', auth, (req, res) => {
 })
 
 //Ruta Chef
-
 router.get('/chef', chefController.getChef);
 router.post('/nuevoChef', chefController.nuevoChef);
 router.get('/chef/:idChef', chefController.getChefById);

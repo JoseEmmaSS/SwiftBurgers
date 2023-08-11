@@ -14,6 +14,28 @@ const inicio = (req, res) => {
     res.send('Rutas funcionando')
 }
 
+//Cerrar Sesión
+const logOutPropietario = async (req, res) => {
+    try {
+        const { idPropietario } = req.body
+        const propietario = await Propietario.findByPk(idPropietario)
+        if (propietario) {
+            await Propietario.update({ token: null }, {
+                where: { idPropietario: req.body.idPropietario }
+            })
+            res.status(200).json({
+                msg: `Sesión Cerrada del usuario ${propietario.nombre}`
+            })
+        } else {
+            res.status(404).json({
+                msg: 'Usuario no encontrado'
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 // Login
 const loginPropietario = async (req, res) => {
     try {
@@ -64,25 +86,6 @@ const getPropietarioById = async (req, res) => {
     } else {
         res.status(404).json({
             msg: `Inventario no encontrado con id: ${idPropietario}`
-        })
-    }
-}
-
-//Cerrar Sesión
-const logOutPropietario = async (req, res) => {
-    const {idPropietario} = req.params
-    const propietario = await Propietario.findByPk(idPropietario)
-
-    if (propietario){
-        await Propietario.update({token:null}, {
-            where: {idPropietario: req.params.idPropietario}
-        })
-        res.status(200).json({
-            msg: `Sesión Cerrada del usuario ${propietario.nombre}`
-        })
-    }else{
-        res.status(404).json({
-            msg: 'Usuario no encontrado'
         })
     }
 }

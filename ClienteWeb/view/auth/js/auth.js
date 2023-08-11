@@ -38,20 +38,24 @@ btnLogin.addEventListener('click', async (event) => {
             // Obtener el token del usuario que accedio
             let data = await login.json()
             let token = data.token
-            console.log(token)
+            let idPropietario = data.idPropietario
+
+            console.log(idPropietario)
+
             //Almacenar el token el el navegador usando localStorage
             localStorage.setItem('userToken', token)
+            localStorage.setItem('idPropietario', idPropietario);
+
             //Mensaje de acceso correcto
             Swal.fire({
                 title: 'Bienvenido',
                 icon: 'success',
-                timer: 1000,
                 timerProgressBar: true,
                 confirmButtonColor: '#facc15'
             })
             setTimeout(() => {
                 window.location.href = '../administracion/index.html'
-            }, 1500);
+            }, 900);
 
         } else {
             Swal.fire({

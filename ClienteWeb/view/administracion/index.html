@@ -12,12 +12,10 @@
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <a href="../public/user/layout.html" class="flex items-center">
           <img src="../../../../src/svg/icono_restaurante.svg" class="mr-3 h-6 sm:h-16" alt="Flowbite Logo" />
-          
-            <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base text-white">Menu
-              Principal</span>
-            
-        </a>
 
+          <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-base text-white">Menu
+            Principal</span>
+        </a>
         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li>
@@ -52,7 +50,7 @@
                 </button>
                 <div id="menuDropdown"
                   class="absolute right-0 mt-2 py-2 w-48 bg-yellow-400 border border-yellow-400 rounded-lg shadow-lg hidden">
-                  <a href="../auth/login.html" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar
+                  <a href="#" id="logOut" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar
                     sesión</a>
                 </div>
               </div>
@@ -178,9 +176,6 @@
           </a>
         </div>
       </div>
-
-
-
     </ul>
 
   </section>
@@ -205,26 +200,7 @@
     }
   </script>
 
-  <script>
-    const menuButton = document.getElementById('menuButton');
-    const menuDropdown = document.getElementById('menuDropdown');
-
-    menuButton.addEventListener('click', function () {
-      menuDropdown.classList.toggle('hidden');
-    });
-
-    //Token
-    // Obtener el token de inicio de seción
-    let token = localStorage.getItem('userToken')
-
-    //Validar si el usuario inicio sesión, si no redirecciona a la pagina de inicio
-    if (token) {
-      console.log(`Token Recuperado: ${token}`)
-    } else {
-      window.location.href = '../public/user/layout.html'
-    }
-
-  </script>
+  <script src="../auth/js/logOut.js"></script>
 
 </body>
 
