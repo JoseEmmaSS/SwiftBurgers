@@ -13,11 +13,11 @@ const router = express.Router()
 router.get('/inicio', propietarioController.inicio);
 
 //Ruta Propietario
-
 router.get('/propietario', propietarioController.getPropietario);
 router.get('/propietario/:idPropietario', propietarioController.getPropietarioById)
 router.post('/nuevoPropietario', propietarioController.nuevoPropietario);
 router.post('/login', propietarioController.loginPropietario);
+router.get('/logOut/:idPropietario', propietarioController.logOutPropietario);
 router.put('/propietario/:idPropietario', auth, propietarioController.actualizarPropietario);
 router.delete('/propietario/:idPropietario', propietarioController.eliminarPropietarioFisico);
 
