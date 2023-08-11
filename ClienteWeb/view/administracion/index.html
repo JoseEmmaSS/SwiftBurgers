@@ -50,7 +50,7 @@
                 </button>
                 <div id="menuDropdown"
                   class="absolute right-0 mt-2 py-2 w-48 bg-yellow-400 border border-yellow-400 rounded-lg shadow-lg hidden">
-                  <a href="#" id="logOut" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar
+                  <a href="#" onclick="logOut1()" class="block px-4 py-2 hover:bg-yellow-600 text-white">Cerrar
                     sesión</a>
                 </div>
               </div>
@@ -182,26 +182,71 @@
 
   <script>
     function redirigir() {
-      var select = document.getElementById("opciones");
-      var opcionSeleccionada = select.value;
+    var select = document.getElementById("opciones");
+    var opcionSeleccionada = select.value;
 
-      if (opcionSeleccionada !== "") {
-        window.location.href = opcionSeleccionada;
-      }
-    }
+    if (opcionSeleccionada !== "") {
+      window.location.href = opcionSeleccionada;
+  }
+}
 
     function redirigirUsuario() {
-      var select = document.getElementById("opcionesProducto");
-      var opcionSeleccionada = select.value;
+    var select = document.getElementById("opcionesProducto");
+    var opcionSeleccionada = select.value;
 
-      if (opcionSeleccionada !== "") {
-        window.location.href = opcionSeleccionada;
-      }
-    }
+    if (opcionSeleccionada !== "") {
+      window.location.href = opcionSeleccionada;
+  }
+  }
+  </script>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const menuDropdown = document.getElementById('menuDropdown');
+  
+    menuButton.addEventListener('click', function() {
+      menuDropdown.classList.toggle('hidden');
+    });
   </script>
 
-  <script src="../auth/js/logOut.js"></script>
+  <script>
+    let idPropietario = localStorage.getItem('idPropietario');
+    const logOut1 = async() => {
+      let token = localStorage.getItem('userToken')
 
+    //Validar si el usuario inicio sesión, si no redirecciona a la pagina de inicio
+    if (token) {
+        console.log(`Token Recuperado: \n ${token}`)
+    } else {
+        console.log('No hay nada')
+    }
+
+    let logOut = {
+        idPropietario: idPropietario
+    }
+
+    let logOutJSON = JSON.stringify(logOut)
+
+    try {
+        let logOutPOST = await fetch('http://localhost:3000/logOut', {
+            method: 'POST',
+            body: logOutJSON,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (logOutPOST.ok) {
+            console.log('Token eliminado')
+            localStorage.removeItem('userToken', null)
+            window.location.href = '../auth/login.html'
+            
+        } else {
+            console.log('Token no eliminado')
+        }
+    } catch (error) {
+        console.log(error)
+    }
+    } 
+  </script>
 </body>
 
 </html>

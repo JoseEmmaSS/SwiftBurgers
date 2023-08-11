@@ -112,3 +112,4 @@ editarInventario = (idInventario) => {
   window.location.href = `editarInventario.html?idInventario=${idInventario}`;
 }
 
+
